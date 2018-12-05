@@ -4,6 +4,7 @@ const config = require(`./config/${env}.env.js`)
 export default {
   env: config,
   srcDir: './app',
+  css: ['ress'],
   build: {
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
@@ -15,5 +16,11 @@ export default {
         })
       }
     }
-  }
+  },
+  modules: [
+    'nuxt-sass-resources-loader',
+    [
+      '@/assets/scss/setting.scss'
+    ]
+  ]
 }

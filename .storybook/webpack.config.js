@@ -17,6 +17,10 @@ module.exports = storybookConfig => {
       },
       {
         loader: 'sass-loader',
+        options: {
+          data: '@import "setting";',
+          includePaths: [path.resolve(__dirname, '../app/assets/scss/')]
+        }
       }
     ]
   })
