@@ -24,7 +24,7 @@ module.exports = storybookConfig => {
     enforce: 'pre',
     test: /\.(js|vue)$/,
     loader: 'eslint-loader',
-    exclude: /node_modules/
+    exclude: /(node_modules)|(stories)/
   })
   storybookConfig.module.rules.push({
     test: /\.css$/,
