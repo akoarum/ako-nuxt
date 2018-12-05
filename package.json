@@ -1,0 +1,103 @@
+{
+  "name": "ako-nuxt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/akoarum/ako-nuxt.git",
+  "author": "kento.muraoka <contact@akoarum.net>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=\"dev\" nuxt",
+    "build:dev": "cross-env NODE_ENV=\"dev\" nuxt build",
+    "build:prod": "cross-env NODE_ENV=\"prod\" nuxt build",
+    "start": "cross-env NODE_ENV=\"prod\" start",
+    "generate:dev": "cross-env NODE_ENV=\"dev\" nuxt generate",
+    "generate:prod": "cross-env NODE_ENV=\"dev\" nuxt generate",
+    "test": "jest",
+    "storybook": "start-storybook -p 9000 -c .storybook",
+    "build-storybook": "build-storybook",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleNameMapper": {
+      "^~(.*?)$": "<rootDir>/app/$1"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,vue}",
+      "!**/node_modules/**",
+      "!**/nuxt.config.js"
+    ],
+    "coverageReporters": [
+      "html",
+      "text-summary"
+    ],
+    "coverageDirectory": "<rootDir>/__test__/coverage",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/stories",
+      "/__test__/",
+      ".eslintrc.js"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@storybook/addon-actions": "^4.0.11",
+    "@storybook/addon-knobs": "^4.0.11",
+    "@storybook/addon-links": "^4.0.11",
+    "@storybook/addon-viewport": "^4.0.11",
+    "@storybook/addons": "^4.0.11",
+    "@storybook/vue": "^4.0.11",
+    "@vue/test-utils": "^1.0.0-beta.26",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-vue": "^2.0.2",
+    "bluebird": "^3.5.3",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "file-loader": "^2.0.0",
+    "flush-promises": "^1.0.2",
+    "jest": "^23.6.0",
+    "mini-css-extract-plugin": "^0.4.5",
+    "moment": "^2.22.2",
+    "node-sass": "^4.10.0",
+    "prettier": "^1.15.3",
+    "sass-loader": "^7.1.0",
+    "sinon": "^7.1.1",
+    "storybook-addon-vue-info": "^0.7.0",
+    "storybook-router": "^0.3.4",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "vue-jest": "^3.0.1",
+    "vue-loader": "^15.4.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.27.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "es6-promise": "^4.2.5",
+    "nuxt": "^2.3.4",
+    "vue": "^2.5.17",
+    "vuex": "^3.0.1"
+  }
+}
