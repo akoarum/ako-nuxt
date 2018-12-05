@@ -1,0 +1,21 @@
+// Fonts
+$fontFamily-ja: '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック体', YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', Meiryo, sans-serif;
+$fontFamily-en: Ubuntu, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', Meiryo, sans-serif;
+$line-height-base: 1.4;
+$font-size-base: 1.6rem;
+
+
+// Color
+$color-primary: #268ade;
+$color-secondary: #e47106;
+$color-text: #313131;
+$color-caption: #808080;
+$color-link: #0e63b9;
+$color-caution: #b62a2a;
+$color-form: #999;
+$color-disabled: #cbcbcb;
+
+
+// transition
+$transition-duration: 0.4s;
+$transition-easing: cubic-bezier(0.46, 0.03, 0.52, 0.96);
