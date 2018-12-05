@@ -3,10 +3,19 @@
     [
       "@babel/env",
       {
-        "modules": false
+        "useBuiltIns": "usage"
       }
     ],
     "vue"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-object-rest-spread", {
+        "loose": true,
+        "useBuiltIns": true
+      }
+    ],
+    "transform-vue-jsx"
   ],
   "env": {
     "test": {
@@ -19,7 +28,14 @@
         ]
       ],
       "plugins": [
-        "transform-object-rest-spread"
+        [
+          "@babel/plugin-proposal-object-rest-spread",
+          {
+            "loose": true,
+            "useBuiltIns": true
+          }
+        ],
+        "transform-vue-jsx"
       ]
     }
   }
