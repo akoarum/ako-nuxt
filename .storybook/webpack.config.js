@@ -43,7 +43,5 @@ module.exports = storybookConfig => {
     loader: 'url-loader'
   })
 
-  console.log(storybookConfig)
-
   return storybookConfig
 }

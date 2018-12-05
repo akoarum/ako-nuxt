@@ -19,6 +19,7 @@ module.exports = {
     "no-console": "off",
     "vue/max-attributes-per-line": "off",
     "vue/require-default-prop": "off",
+    "vue/singleline-html-element-content-newline": "off",
     "prettier/prettier": ["error", {
       "semi": false,
       "bracketSpacing": true,
