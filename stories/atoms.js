@@ -10,6 +10,7 @@ import VHeadings from '~/components/atoms/VHeadings'
 import VTexts from '~/components/atoms/VTexts'
 import VInputText from '~/components/atoms/VInputText'
 import VTextarea from '~/components/atoms/VTextarea'
+import VSelect from '~/components/atoms/VSelect'
 
 storiesOf('Atoms', module)
   .addDecorator(VueInfoAddon)
@@ -148,6 +149,54 @@ storiesOf('Atoms', module)
         focusHandler: action('focus'),
         blurHandler: action('blur'),
         inputHandler: action('input')
+      }
+    }
+  })
+  .add('VSelect', () => {
+    const defaultValue = select('初期値', {
+      'なし': '',
+      '項目1': '1'
+    }, '')
+    const error = select('エラー', {
+      'false': 'false',
+      'true': 'true'
+    }, 'false')
+
+    return {
+      components: { VSelect },
+      template: `
+        <VSelect name="test"
+                 :value="value"
+                 :options="options"
+                 ${error === 'true' ? 'error' : ''}
+                 @change="updateValue" />
+      `,
+      data() {
+        return {
+          value: defaultValue,
+          options: [
+            {
+              id: 1,
+              value: '1',
+              display: '項目1'
+            },
+            {
+              id: 2,
+              value: '2',
+              display: '項目2'
+            },
+            {
+              id: 3,
+              value: '3',
+              display: '項目3'
+            }
+          ]
+        }
+      },
+      methods: {
+        updateValue(value) {
+          this.value = value
+        }
       }
     }
   })
