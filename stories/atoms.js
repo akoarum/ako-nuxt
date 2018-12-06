@@ -8,6 +8,7 @@ import VButton from '~/components/atoms/VButton/VButton'
 import VButtonLink from '~/components/atoms/VButton/VButtonLink'
 import VHeadings from '~/components/atoms/VHeadings'
 import VTexts from '~/components/atoms/VTexts'
+import VInputText from '~/components/atoms/VInputText'
 
 storiesOf('Atoms', module)
   .addDecorator(VueInfoAddon)
@@ -84,5 +85,40 @@ storiesOf('Atoms', module)
     return {
       components: { VTexts },
       template: `<VTexts text="${texts}" />`
+    }
+  })
+  .add('VInputText', () => {
+    const type = select('TYPE', {
+      'text': 'text',
+      'number': 'number',
+      'email': 'email',
+      'tel': 'tel'
+    }, 'text')
+    const error = select('エラー', {
+      'なし': 'false',
+      'あり': 'true'
+    }, 'false')
+
+    return {
+      components: { VInputText },
+      template: `
+        <VInputText :value="value"
+                    type="${type}"
+                    name="test"
+                    id="test-input"
+                    ${error === 'true' ? 'error' : ''}
+                    @focus="focusHandler"
+                    @blur="blurHandler"
+                    @input="inputHandler" />`,
+      data() {
+        return {
+          value: ''
+        }
+      },
+      methods: {
+        focusHandler: action('focus'),
+        blurHandler: action('blur'),
+        inputHandler: action('input')
+      }
     }
   })
