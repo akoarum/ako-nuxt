@@ -1,6 +1,8 @@
 .btn {
+  display: inline-block;
   background: $color-text;
   line-height: 1;
+  text-decoration: none;
   color: #fff;
   transition: background $transition-duration $transition-easing;
   will-change: background;
