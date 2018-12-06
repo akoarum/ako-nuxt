@@ -6,6 +6,7 @@ import StoryRouter from 'storybook-router'
 
 import VButton from '~/components/atoms/VButton/VButton'
 import VButtonLink from '~/components/atoms/VButton/VButtonLink'
+import VHeadings from '~/components/atoms/VHeadings'
 import VTexts from '~/components/atoms/VTexts'
 
 storiesOf('Atoms', module)
@@ -54,6 +55,26 @@ storiesOf('Atoms', module)
       components: { VButtonLink },
       template: `
         <VButtonLink to="/" label="${label}" ${color} ${size} />
+      `
+    }
+  })
+  .add('VHeadings', () => {
+    const level = select('レベル', {
+      '2': '2',
+      '3': '3',
+      '4': '4'
+    }, '2')
+    const visual = select('見た目レベル', {
+      '2': '2',
+      '3': '3',
+      '4': '4'
+    }, '2')
+    const texts = text('テキスト', 'あのイーハトーヴォのすきとおった風')
+
+    return {
+      components: { VHeadings },
+      template: `
+        <VHeadings :level="${Number(level)}" :visual-level="${Number(visual)}" text="${texts}" />
       `
     }
   })
