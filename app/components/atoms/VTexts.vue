@@ -15,12 +15,12 @@ export default {
   white-space: pre-wrap;
 
   @media screen and (min-width: 768px) {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    font-size: $fontSize-base;
+    line-height: $lineHeight-base;
   }
   @media screen and (max-width: 767px) {
-    font-size: $font-size-sp;
-    line-height: $line-height-sp;
+    font-size: $fontSize-sp;
+    line-height: $lineHeight-sp;
   }
 }
 </style>

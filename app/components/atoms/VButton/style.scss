@@ -20,7 +20,7 @@
   @media screen and (min-width: 768px) {
     border-radius: 5px;
     padding: 8px 24px 9px;
-    font-size: $font-size-base;
+    font-size: $fontSize-base;
 
     &.-small {
       padding: 6px 20px;
@@ -47,7 +47,7 @@
     border-radius: 6px;
     padding: 11px 24px 12px;
     width: 100%;
-    font-size: $font-size-base;
+    font-size: $fontSize-base;
 
     &.-small {
       padding: 8px 24px;
