@@ -9,6 +9,7 @@ import VButtonLink from '~/components/atoms/VButton/VButtonLink'
 import VHeadings from '~/components/atoms/VHeadings'
 import VTexts from '~/components/atoms/VTexts'
 import VInputText from '~/components/atoms/VInputText'
+import VInputRadio from '~/components/atoms/VInputRadio'
 import VTextarea from '~/components/atoms/VTextarea'
 import VSelect from '~/components/atoms/VSelect'
 
@@ -121,6 +122,40 @@ storiesOf('Atoms', module)
         focusHandler: action('focus'),
         blurHandler: action('blur'),
         inputHandler: action('input')
+      }
+    }
+  })
+  .add('VInputRadio', () => {
+    const defaultChecked = select('初期チェック', {
+      'なし': 'false',
+      'あり': 'true'
+    }, 'false')
+    const error = select('エラー', {
+      'なし': 'false',
+      'あり': 'true'
+    }, 'false')
+
+    return {
+      components: { VInputRadio },
+      template: `
+        <VInputRadio name="test"
+                     value="test-value"
+                     label="テスト"
+                     :checked-value="value"
+                     ${error === 'true' ? 'error' : ''}
+                     @change="changeHandler" />
+      `,
+      data() {
+        return {
+          value: defaultChecked === 'true' ? 'test-value' : ''
+        }
+      },
+      methods: {
+        changeHandler(value) {
+          this.value = value
+          this.action(value)
+        },
+        action: action('change')
       }
     }
   })
