@@ -6,6 +6,7 @@ import StoryRouter from 'storybook-router'
 
 import VButton from '~/components/atoms/VButton/VButton'
 import VButtonLink from '~/components/atoms/VButton/VButtonLink'
+import VTexts from '~/components/atoms/VTexts'
 
 storiesOf('Atoms', module)
   .addDecorator(VueInfoAddon)
@@ -54,5 +55,13 @@ storiesOf('Atoms', module)
       template: `
         <VButtonLink to="/" label="${label}" ${color} ${size} />
       `
+    }
+  })
+  .add('VTexts', () => {
+    const texts = text('テキスト', 'あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、\nうつくしい森で飾られたモリーオ市。')
+
+    return {
+      components: { VTexts },
+      template: `<VTexts text="${texts}" />`
     }
   })
