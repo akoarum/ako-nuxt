@@ -5,6 +5,14 @@
       :type="type"
       :name="name"
       :value="value"
+      :minlength="minlength"
+      :maxlength="maxlength"
+      :min="min"
+      :max="max"
+      :step="step"
+      :readonly="readonly"
+      :disabled="disabled"
+      :autocomplete="autocomplete"
       :required="required"
       :error="!!error"
       :aria-describedby="id ? `${id}-error` : `${name}-error`"
@@ -35,8 +43,17 @@ export default {
     type: { type: String, required: true },
     name: { type: String, required: true },
     value: { type: String, required: true },
-    required: { type: Boolean, default: false },
-    id: { type: String }
+    id: { type: String },
+    placeholder: { type: String },
+    minlength: { type: String },
+    maxlength: { type: String },
+    min: { type: String },
+    max: { type: String },
+    step: { type: String },
+    required: { type: Boolean },
+    readonly: { type: Boolean },
+    disabled: { type: Boolean },
+    autocomplete: { type: Boolean }
   },
   data() {
     return {
