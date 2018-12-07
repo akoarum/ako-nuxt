@@ -1,11 +1,23 @@
 <template>
-  <p class="texts">{{ text }}</p>
+  <p :class="appearanceClasses" class="texts">{{ text }}</p>
 </template>
 
 <script>
 export default {
   props: {
-    text: { type: String, required: true }
+    text: { type: String, required: true },
+    error: { type: Boolean }
+  },
+  computed: {
+    appearanceClasses() {
+      const classes = []
+
+      if (this.error) {
+        classes.push('-error')
+      }
+
+      return classes
+    }
   }
 }
 </script>
@@ -13,6 +25,10 @@ export default {
 <style lang="scss" scoped>
 .texts {
   white-space: pre-wrap;
+
+  &.-error {
+    color: $color-caution;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: $fontSize-base;

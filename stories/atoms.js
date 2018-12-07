@@ -87,10 +87,14 @@ storiesOf('Atoms', module)
   })
   .add('VTexts', () => {
     const texts = text('テキスト', 'あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、\nうつくしい森で飾られたモリーオ市。')
+    const appearance = select('見た目', {
+      '通常': '',
+      'エラー': 'error'
+    }, '')
 
     return {
       components: { VTexts },
-      template: `<VTexts text="${texts}" />`
+      template: `<VTexts text="${texts}" ${appearance} />`
     }
   })
   .add('VList', () => {
