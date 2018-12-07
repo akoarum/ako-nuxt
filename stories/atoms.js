@@ -139,7 +139,8 @@ storiesOf('Atoms', module)
                     ${error === 'true' ? 'error' : ''}
                     @focus="focusHandler"
                     @blur="blurHandler"
-                    @input="inputHandler" />`,
+                    @input="inputHandler"
+                    @dirty="dirtyHandler" />`,
       data() {
         return {
           value: ''
@@ -148,7 +149,8 @@ storiesOf('Atoms', module)
       methods: {
         focusHandler: action('focus'),
         blurHandler: action('blur'),
-        inputHandler: action('input')
+        inputHandler: action('input'),
+        dirtyHandler: action('dirty')
       }
     }
   })
