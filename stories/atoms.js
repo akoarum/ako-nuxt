@@ -10,6 +10,7 @@ import VHeadings from '~/components/atoms/VHeadings'
 import VTexts from '~/components/atoms/VTexts'
 import VInputText from '~/components/atoms/VInputText'
 import VInputRadio from '~/components/atoms/VInputRadio'
+import VInputCheckbox from '~/components/atoms/VInputCheckbox'
 import VTextarea from '~/components/atoms/VTextarea'
 import VSelect from '~/components/atoms/VSelect'
 
@@ -154,6 +155,45 @@ storiesOf('Atoms', module)
         changeHandler(value) {
           this.value = value
           this.action(value)
+        },
+        action: action('change')
+      }
+    }
+  })
+  .add('VInputCheckbox', () => {
+    const defaultChecked = select('初期チェック', {
+      'なし': 'false',
+      'あり': 'true'
+    }, 'false')
+    const error = select('エラー', {
+      'なし': 'false',
+      'あり': 'true'
+    }, 'false')
+
+    return {
+      components: { VInputCheckbox },
+      template: `
+        <VInputCheckbox name="test"
+                        value="test-value"
+                        label="テスト"
+                        :checked="checked"
+                        ${error === 'true' ? 'error' : ''}
+                        @change="changeHandler" />
+      `,
+      data() {
+        return {
+          checked: defaultChecked === 'true' ? ['test-value'] : []
+        }
+      },
+      methods: {
+        changeHandler({ value, checked }) {
+          if (checked) {
+            this.checked = this.checked.concat([value])
+          } else {
+            this.checked = this.checked.filter(item => value !== item)
+          }
+
+          this.action({ value, checked })
         },
         action: action('change')
       }
