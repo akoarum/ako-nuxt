@@ -8,6 +8,7 @@ import VButton from '~/components/atoms/VButton/VButton'
 import VButtonLink from '~/components/atoms/VButton/VButtonLink'
 import VHeadings from '~/components/atoms/VHeadings'
 import VTexts from '~/components/atoms/VTexts'
+import VList from '~/components/atoms/VList'
 import VInputText from '~/components/atoms/VInputText'
 import VInputRadio from '~/components/atoms/VInputRadio'
 import VInputCheckbox from '~/components/atoms/VInputCheckbox'
@@ -90,6 +91,26 @@ storiesOf('Atoms', module)
     return {
       components: { VTexts },
       template: `<VTexts text="${texts}" />`
+    }
+  })
+  .add('VList', () => {
+    const tag = select('タグ', {
+      'ul': 'ul',
+      'ol': 'ol'
+    }, 'ul')
+    const visual = select('見た目', {
+      'ビュレット': 'bullet',
+      '数字': 'number'
+    }, 'bullet')
+
+    return {
+      components: { VList },
+      template: `<VList :items="items" tag="${tag}" visual="${visual}" />`,
+      data() {
+        return {
+          items: ['項目1', '項目2', '項目3']
+        }
+      }
     }
   })
   .add('VInputText', () => {
