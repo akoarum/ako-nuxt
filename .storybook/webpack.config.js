@@ -35,7 +35,11 @@ module.exports = storybookConfig => {
     loader: 'style-loader!css-loader'
   })
   storybookConfig.module.rules.push({
-    test: /\.(png|jpe?g|gif|svg)$/,
+    test: /\.svg$/,
+    loader: 'svg-url-loader'
+  })
+  storybookConfig.module.rules.push({
+    test: /\.(png|jpe?g|gif)$/,
     loader: 'url-loader',
     query: {
       limit: 1000, // 1kB
@@ -43,7 +47,7 @@ module.exports = storybookConfig => {
     }
   })
   storybookConfig.module.rules.push({
-    test: /\.(otf|eot|svg|ttf|woff|woff2)(\?.+)?$/,
+    test: /\.(otf|eot|ttf|woff|woff2)(\?.+)?$/,
     loader: 'url-loader'
   })
 

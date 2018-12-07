@@ -14,6 +14,17 @@ export default {
           loader: 'eslint-loader',
           exclude: /node_modules/
         })
+
+        config.module.rules
+          .filter(rule => rule.test.toString().includes('svg'))
+          .forEach(rule => {
+            rule.test = /\.(png|jpe?g|gif)$/
+          })
+
+        config.module.rules.push({
+          test: /\.svg$/,
+          loader: 'svg-url-loader'
+        })
       }
     }
   },
