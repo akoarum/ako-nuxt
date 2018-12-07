@@ -12,7 +12,7 @@
     "start": "cross-env NODE_ENV=\"prod\" start",
     "generate:dev": "cross-env NODE_ENV=\"dev\" nuxt generate",
     "generate:prod": "cross-env NODE_ENV=\"dev\" nuxt generate",
-    "test": "jest",
+    "test": "jest --coverage",
     "storybook": "start-storybook -p 9000 -c .storybook",
     "build-storybook": "build-storybook",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
@@ -31,7 +31,6 @@
     "moduleNameMapper": {
       "^~(.*?)$": "<rootDir>/app/$1"
     },
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,vue}",
       "!**/node_modules/**",
@@ -46,6 +45,8 @@
       "/node_modules/",
       "<rootDir>/stories",
       "/__test__/",
+      "<rootDir>/dist",
+      "<rootDir>/config",
       ".eslintrc.js"
     ]
   },
