@@ -13,6 +13,7 @@ import VInputRadio from '~/components/atoms/VInputRadio'
 import VInputCheckbox from '~/components/atoms/VInputCheckbox'
 import VTextarea from '~/components/atoms/VTextarea'
 import VSelect from '~/components/atoms/VSelect'
+import VIconClose from '~/components/atoms/VIcon/VIconClose'
 
 storiesOf('Atoms', module)
   .addDecorator(VueInfoAddon)
@@ -273,5 +274,16 @@ storiesOf('Atoms', module)
           this.value = value
         }
       }
+    }
+  })
+  .add('VIconClose', () => {
+    const color = select('色', {
+      'default': '',
+      'primary': 'primary',
+      'secondary': 'secondary'
+    }, '')
+    return {
+      components: { VIconClose },
+      template: `<VIconClose ${color} />`
     }
   })
