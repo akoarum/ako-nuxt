@@ -13,9 +13,9 @@
       :required="required"
       :error="!!error"
       :aria-describedby="id ? `${id}-error` : `${name}-error`"
+      class="textarea__body"
       @dirty="isDirtied = true"
       @input="inputHandler"
-      class="textarea__body"
     />
     <VTexts
       v-show="error"
