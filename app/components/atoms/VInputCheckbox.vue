@@ -8,6 +8,7 @@
       :aria-describedby="ariaDescribedby"
       :aria-invalid="String(error)"
       :checked="isChecked"
+      :required="required"
       type="checkbox"
       @change="
         $emit('change', {
@@ -30,6 +31,7 @@ export default {
     ariaLabel: { type: String },
     ariaLabelledby: { type: String },
     ariaDescribedby: { type: String },
+    required: { type: Boolean },
     error: { type: Boolean }
   },
   computed: {
