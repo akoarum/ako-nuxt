@@ -17,5 +17,8 @@ export const VALIDATES = {
   URL: {
     regex: /^http(s):\/\/.+?\.+?$/,
     message: 'URLの形式になっていません。'
+  },
+  SELECT: {
+    message: '選択してください。'
   }
 }

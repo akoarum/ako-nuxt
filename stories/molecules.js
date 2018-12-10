@@ -6,6 +6,7 @@ import StoryRouter from 'storybook-router'
 
 import FormInputText from '~/components/molecules/FormInputText'
 import FormInputRadio from '~/components/molecules/FormInputRadio'
+import FormInputCheckbox from '~/components/molecules/FormInputCheckbox'
 import FormTextarea from '~/components/molecules/FormTextarea'
 
 storiesOf('Molecules', module)
@@ -66,6 +67,35 @@ storiesOf('Molecules', module)
             { id: 3, display: 'テスト3', value: 'test3' }
           ],
           value: ''
+        }
+      },
+      methods: {
+        changeHandler: action('change')
+      }
+    }
+  })
+  .add('FormInputCheckbox', () => {
+    const required = select('Required', {
+      'false': '',
+      'true': 'required'
+    }, '')
+    return {
+      components: { FormInputCheckbox },
+      template: `
+        <FormInputCheckbox v-model="value"
+                           :items="items"
+                           name="test"
+                           ${ required }
+                           @change="changeHandler" />
+      `,
+      data() {
+        return {
+          value: [],
+          items: [
+            { id: 1, display: '項目1', value: 'test1' },
+            { id: 2, display: '項目2', value: 'test2' },
+            { id: 3, display: '項目3', value: 'test3' }
+          ]
         }
       },
       methods: {
