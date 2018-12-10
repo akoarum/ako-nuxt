@@ -5,6 +5,7 @@ import VueInfoAddon from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
 
 import FormInputText from '~/components/molecules/FormInputText'
+import FormTextarea from '~/components/molecules/FormTextarea'
 
 storiesOf('Molecules', module)
   .addDecorator(VueInfoAddon)
@@ -36,6 +37,35 @@ storiesOf('Molecules', module)
         return {
           value: '',
           error: false,
+        }
+      },
+      methods: {
+        errorHandler({ error }) {
+          this.error = error
+          this.errorAction(error)
+        },
+        errorAction: action('error')
+      }
+    }
+  })
+  .add('FormTextarea', () => {
+    const required = select('Required', {
+      'false': '',
+      'true': 'required'
+    }, '')
+
+    return {
+      components: { FormTextarea },
+      template: `
+        <FormTextarea v-model="value"
+                      name="name"
+                      ${required}
+                      @error="errorHandler" />
+      `,
+      data() {
+        return {
+          value: '',
+          error: false
         }
       },
       methods: {
