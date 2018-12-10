@@ -57,7 +57,8 @@ storiesOf('Molecules', module)
         <FormInputRadio v-model="value"
                         name="test"
                         :items="items"
-                        @change="changeHandler" />
+                        @change="changeHandler"
+                        @error="errorHandler" />
       `,
       data() {
         return {
@@ -70,7 +71,8 @@ storiesOf('Molecules', module)
         }
       },
       methods: {
-        changeHandler: action('change')
+        changeHandler: action('change'),
+        errorHandler: action('error')
       }
     }
   })
@@ -86,7 +88,8 @@ storiesOf('Molecules', module)
                            :items="items"
                            name="test"
                            ${ required }
-                           @change="changeHandler" />
+                           @change="changeHandler"
+                           @error="errorHandler" />
       `,
       data() {
         return {
@@ -99,7 +102,8 @@ storiesOf('Molecules', module)
         }
       },
       methods: {
-        changeHandler: action('change')
+        changeHandler: action('change'),
+        errorHandler: action('error')
       }
     }
   })

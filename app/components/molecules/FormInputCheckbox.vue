@@ -50,6 +50,9 @@ export default {
     }
   },
   watch: {
+    error() {
+      this.$emit('error', !!this.error)
+    },
     value() {
       if (!this.isDirtied) return
       this.error = this.validate()

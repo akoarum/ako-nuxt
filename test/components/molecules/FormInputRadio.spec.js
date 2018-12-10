@@ -18,6 +18,12 @@ const wrapperFactory = (propsData = {}) => shallowMount(FormInputRadio, {
 })
 
 describe('FormInputRadio', () => {
+  it('[watch] error: errorをemitする', () => {
+    const wrapper = wrapperFactory()
+    wrapper.setData({ error: 'test' })
+    expect(wrapper.emitted().error[0][0]).toBe(true)
+  })
+
   it('[methods] changeHandler: change を emit する', () => {
     const wrapper = wrapperFactory()
     wrapper.vm.changeHandler('test')

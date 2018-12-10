@@ -39,6 +39,11 @@ export default {
       error: ''
     }
   },
+  watch: {
+    error() {
+      this.$emit('error', !!this.error)
+    }
+  },
   methods: {
     changeHandler(value) {
       this.$emit('change', value)

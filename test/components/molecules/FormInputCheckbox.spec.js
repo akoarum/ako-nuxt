@@ -18,6 +18,12 @@ const wrapperFactory = (propsData = {}) => shallowMount(FormInputCheckbox, {
 })
 
 describe('FormInputCheckbox', () => {
+  it('[watch] error: errorをemitする', () => {
+    const wrapper = wrapperFactory()
+    wrapper.setData({ error: 'test' })
+    expect(wrapper.emitted().error[0][0]).toBe(true)
+  })
+
   it('[watch] value: isDirtied が true なら validateメソッドを実行する', () => {
     const mock = jest.fn()
     const wrapper = wrapperFactory()
