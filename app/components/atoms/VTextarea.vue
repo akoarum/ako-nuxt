@@ -6,9 +6,9 @@
     :aria-invalid="error"
     :class="appearanceClasses"
     class="textarea"
-    @focus="$emit('focus')"
-    @blur="$emit('blur')"
-    @input="$emit('input', $event.target.value)"
+    @focus="focusHandler"
+    @blur="blurHandler"
+    @input="inputHandler"
   />
 </template>
 
@@ -20,6 +20,14 @@ export default {
     id: { type: String },
     error: { type: Boolean, default: false }
   },
+  data() {
+    return {
+      isFocused: false,
+      isBlurred: false,
+      isInput: false,
+      isDirtied: false
+    }
+  },
   computed: {
     appearanceClasses() {
       const classes = []
@@ -29,6 +37,30 @@ export default {
       }
 
       return classes
+    }
+  },
+  methods: {
+    focusHandler() {
+      if (!this.isFocused) {
+        this.isFocused = true
+      }
+      this.$emit('focus')
+    },
+    blurHandler() {
+      if (!this.isBlurred) {
+        this.isBlurred = true
+      }
+      this.$emit('blur')
+
+      if (!this.isInput || this.isDirtied) return
+      this.$emit('dirty')
+      this.isDirtied = true
+    },
+    inputHandler(event) {
+      if (!this.isInput) {
+        this.isInput = true
+      }
+      this.$emit('input', event.target.value)
     }
   }
 }
