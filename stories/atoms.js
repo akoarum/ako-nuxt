@@ -274,7 +274,9 @@ storiesOf('Atoms', module)
                  :value="value"
                  :options="options"
                  ${error === 'true' ? 'error' : ''}
-                 @change="updateValue" />
+                 @change="updateValue"
+                 @open="openHandler"
+                 @close="closeHandler" />
       `,
       data() {
         return {
@@ -301,7 +303,9 @@ storiesOf('Atoms', module)
       methods: {
         updateValue(value) {
           this.value = value
-        }
+        },
+        openHandler: action('open'),
+        closeHandler: action('close')
       }
     }
   })

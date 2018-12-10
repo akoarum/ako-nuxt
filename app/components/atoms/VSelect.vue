@@ -69,6 +69,11 @@ export default {
       return classes
     }
   },
+  watch: {
+    isOpened() {
+      this.$emit(this.isOpened ? 'open' : 'close')
+    }
+  },
   methods: {
     openOption() {
       this.isOpened = true

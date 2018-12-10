@@ -31,6 +31,15 @@ describe('VSelect', () => {
     expect(VSelect.computed.appearanceClasses.call({ error: true })).toEqual(['-error'])
   })
 
+  it('[watch] isOpened: isOpened が true の時は open、 false の時は close を emit する', () => {
+    const wrapper = wrapperFactory()
+    wrapper.setData({ isOpened: true })
+    expect(wrapper.emitted().open).toBeTruthy()
+
+    wrapper.setData({ isOpened: false })
+    expect(wrapper.emitted().close).toBeTruthy()
+  })
+
   it('[methods] openOption: isOpened を true にする', () => {
     const wrapper = wrapperFactory()
     wrapper.vm.openOption()
