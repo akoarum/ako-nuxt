@@ -5,6 +5,7 @@ import VueInfoAddon from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
 
 import FormInputText from '~/components/molecules/FormInputText'
+import FormInputRadio from '~/components/molecules/FormInputRadio'
 import FormTextarea from '~/components/molecules/FormTextarea'
 
 storiesOf('Molecules', module)
@@ -45,6 +46,30 @@ storiesOf('Molecules', module)
           this.errorAction(error)
         },
         errorAction: action('error')
+      }
+    }
+  })
+  .add('FormInputRadio', () => {
+    return {
+      components: { FormInputRadio },
+      template: `
+        <FormInputRadio v-model="value"
+                        name="test"
+                        :items="items"
+                        @change="changeHandler" />
+      `,
+      data() {
+        return {
+          items: [
+            { id: 1, display: 'テスト1', value: 'test1' },
+            { id: 2, display: 'テスト2', value: 'test2' },
+            { id: 3, display: 'テスト3', value: 'test3' }
+          ],
+          value: ''
+        }
+      },
+      methods: {
+        changeHandler: action('change')
       }
     }
   })
