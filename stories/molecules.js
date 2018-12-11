@@ -7,6 +7,7 @@ import StoryRouter from 'storybook-router'
 import FormInputText from '~/components/molecules/FormInputText'
 import FormInputRadio from '~/components/molecules/FormInputRadio'
 import FormInputCheckbox from '~/components/molecules/FormInputCheckbox'
+import FormSelect from '~/components/molecules/FormSelect'
 import FormTextarea from '~/components/molecules/FormTextarea'
 
 storiesOf('Molecules', module)
@@ -104,6 +105,37 @@ storiesOf('Molecules', module)
       methods: {
         changeHandler: action('change'),
         errorHandler: action('error')
+      }
+    }
+  })
+  .add('FormSelect', () => {
+    const required = select('Required', {
+      'false': '',
+      'true': 'required'
+    }, '')
+    return {
+      components: { FormSelect },
+      template: `
+        <FormSelect v-model="value"
+                    :options="options"
+                    name="test"
+                    ${required}
+                    @error="errorHandler"
+                    @change="changeHandler" />
+      `,
+      data() {
+        return {
+          value: '',
+          options: [
+            { id: 1, display: '項目1', value: 'test1' },
+            { id: 2, display: '項目2', value: 'test2' },
+            { id: 3, display: '項目3', value: 'test3' }
+          ]
+        }
+      },
+      methods: {
+        errorHandler: action('error'),
+        changeHandler: action('change')
       }
     }
   })
