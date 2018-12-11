@@ -103,5 +103,9 @@ export default {
   @media screen and (min-width: 768px) {
     font-size: $fontSize-base;
   }
+
+  @media screen and (max-width: 767px) {
+    font-size: $fontSize-sp;
+  }
 }
 </style>
