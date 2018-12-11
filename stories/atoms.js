@@ -15,6 +15,7 @@ import VInputCheckbox from '~/components/atoms/VInputCheckbox'
 import VTextarea from '~/components/atoms/VTextarea'
 import VSelect from '~/components/atoms/VSelect'
 import VIconClose from '~/components/atoms/VIcon/VIconClose'
+import VContent from '~/components/atoms/VContent'
 
 storiesOf('Atoms', module)
   .addDecorator(VueInfoAddon)
@@ -318,5 +319,20 @@ storiesOf('Atoms', module)
     return {
       components: { VIconClose },
       template: `<VIconClose ${color} />`
+    }
+  })
+  .add('VContent', () => {
+    const tag = select('タグ', {
+      'div': 'div',
+      'section': 'section',
+      'article': 'article'
+    }, 'div')
+    return {
+      components: { VContent },
+      template: `
+        <VContent tag="${ tag }">
+          <p>テキストテキスト</p>
+        </VContent>
+      `
     }
   })
