@@ -18,6 +18,8 @@
                 type="radio"
                 :name="name"
                 :value="option.value"
+                :aria-invalid="String(error)"
+                :aria-describedby="ariaDescribedby"
                 :checked="value === option.value"
                 :required="required"
                 @change="selectOption"
@@ -39,6 +41,7 @@ export default {
     value: { type: String, required: true },
     options: { type: Array, required: true },
     placeholder: { type: String, default: '選択してください' },
+    ariaDescribedby: { type: String },
     id: { type: String },
     error: { type: Boolean },
     required: { type: Boolean }
