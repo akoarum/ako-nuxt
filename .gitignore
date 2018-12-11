@@ -8,6 +8,7 @@ yarn-error.log*
 .eslintcache
 .cache
 .nuxt
+.idea
 
 __test__/
 dist/
