@@ -16,6 +16,7 @@ import VTextarea from '~/components/atoms/VTextarea'
 import VSelect from '~/components/atoms/VSelect'
 import VIconClose from '~/components/atoms/VIcon/VIconClose'
 import VContent from '~/components/atoms/VContent'
+import VTable from '~/components/atoms/VTable'
 
 storiesOf('Atoms', module)
   .addDecorator(VueInfoAddon)
@@ -336,3 +337,33 @@ storiesOf('Atoms', module)
       `
     }
   })
+  .add('VTable', () => ({
+    components: { VTable },
+    template: `
+      <VTable :headers="headers" :widths="widths">
+        <tr v-for="item in items" :key="item.id">
+          <th>{{ item.id }}</th>
+          <td>{{ item.name }}</td>
+          <td>{{ item.age }}</td>
+          <td>{{ item.gender }}</td>
+        </tr>
+      </VTable>
+    `,
+    data() {
+      return {
+        headers: [
+          { id: 1, display: 'No.', align: 'left' },
+          { id: 2, display: 'Name' },
+          { id: 3, display: 'Age' },
+          { id: 4, display: 'Gender' }
+        ],
+        widths: ['6%', '54%', '15%', '25%'],
+        items: [
+          { id: 1, name: 'Test Taro', age: 28, gender: 'Male' },
+          { id: 2, name: 'Test Tesuko', age: 46, gender: 'Female' },
+          { id: 3, name: 'Test Tesuo', age: 30, gender: 'Male' },
+          { id: 4, name: 'Spec Speco', age: 22, gender: 'Female' }
+        ]
+      }
+    }
+  }))
