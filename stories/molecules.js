@@ -9,6 +9,7 @@ import FormInputRadio from '~/components/molecules/FormInputRadio'
 import FormInputCheckbox from '~/components/molecules/FormInputCheckbox'
 import FormSelect from '~/components/molecules/FormSelect'
 import FormTextarea from '~/components/molecules/FormTextarea'
+import Modal from '~/components/molecules/Modal'
 
 storiesOf('Molecules', module)
   .addDecorator(VueInfoAddon)
@@ -165,6 +166,24 @@ storiesOf('Molecules', module)
           this.errorAction(error)
         },
         errorAction: action('error')
+      }
+    }
+  })
+  .add('Modal', () => {
+    return {
+      components: { Modal },
+      template: `
+        <div>
+          <button type="button" @click="open = true">Open</button>
+          <Modal :is-open="open" @close="open = false">
+            テスト
+          </Modal>
+        </div>
+      `,
+      data() {
+        return {
+          open: false
+        }
       }
     }
   })
