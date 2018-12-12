@@ -8,6 +8,7 @@ import VButton from '~/components/atoms/VButton/VButton'
 import VButtonLink from '~/components/atoms/VButton/VButtonLink'
 import VHeadings from '~/components/atoms/VHeadings'
 import VTexts from '~/components/atoms/VTexts'
+import VDate from '~/components/atoms/VDate'
 import VList from '~/components/atoms/VList'
 import VInputText from '~/components/atoms/VInputText'
 import VInputRadio from '~/components/atoms/VInputRadio'
@@ -99,6 +100,10 @@ storiesOf('Atoms', module)
       template: `<VTexts text="${texts}" ${appearance} />`
     }
   })
+  .add('VDate', () => ({
+    components: { VDate },
+    template: `<VDate date="2018-12-01" />`
+  }))
   .add('VList', () => {
     const tag = select('タグ', {
       'ul': 'ul',
