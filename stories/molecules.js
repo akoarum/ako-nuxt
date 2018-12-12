@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text, select } from '@storybook/addon-knobs'
+import { withNotes } from '@storybook/addon-notes'
 import VueInfoAddon from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
 
@@ -15,6 +16,7 @@ import Tab from '~/components/molecules/Tab'
 storiesOf('Molecules', module)
   .addDecorator(VueInfoAddon)
   .addDecorator(withKnobs)
+  .addDecorator(withNotes)
   .addDecorator(StoryRouter({}))
   .add('FormInputText', () => {
     const type = select('Type', {
@@ -52,6 +54,11 @@ storiesOf('Molecules', module)
         errorAction: action('error')
       }
     }
+  }, {
+    notes: `
+      typeに合わせてバリデーションが実行されます。requiredが設定されている場合は入力チェックを行います。
+      errorの発生や消去のタイミングでそれぞれ error イベントが発火します。
+    `
   })
   .add('FormInputRadio', () => {
     return {
@@ -76,8 +83,23 @@ storiesOf('Molecules', module)
       methods: {
         changeHandler: action('change'),
         errorHandler: action('error')
+      },
+      propsDescription: {
+        items: '型はNOTES参照'
       }
     }
+  }, {
+    notes: `
+      errorの発生や消去のタイミングでそれぞれ error イベントが発火します。
+
+      items配列のインタフェース
+      ==
+      {
+      --id: number（一意のID）
+      --display: string（表示用テキスト）
+      --value: string（実際の値）
+      }
+    `
   })
   .add('FormInputCheckbox', () => {
     const required = select('Required', {
@@ -107,8 +129,24 @@ storiesOf('Molecules', module)
       methods: {
         changeHandler: action('change'),
         errorHandler: action('error')
+      },
+      propsDescription: {
+        items: '型はNOTES参照'
       }
     }
+  }, {
+    notes: `
+      required設定していて全てのチェックを外すとエラーを発生させます。
+      errorの発生や消去のタイミングでそれぞれ error イベントが発火します。
+
+      items配列のインタフェース
+      ==
+      {
+      --id: number（一意のID）
+      --display: string（表示用テキスト）
+      --value: string（実際の値）
+      }
+    `
   })
   .add('FormSelect', () => {
     const required = select('Required', {
@@ -138,8 +176,24 @@ storiesOf('Molecules', module)
       methods: {
         errorHandler: action('error'),
         changeHandler: action('change')
+      },
+      propsDescription: {
+        options: '型はNOTES参照'
       }
     }
+  }, {
+    notes: `
+      required設定していて一度開き、選択せずに閉じるとエラーを発生させます。
+      errorの発生や消去のタイミングでそれぞれ error イベントが発火します。
+
+      options配列のインタフェース
+      ==
+      {
+      --id: number（一意のID）
+      --display: string（表示用テキスト）
+      --value: string（実際の値）
+      }
+    `
   })
   .add('FormTextarea', () => {
     const required = select('Required', {
@@ -169,6 +223,11 @@ storiesOf('Molecules', module)
         errorAction: action('error')
       }
     }
+  }, {
+    notes: `
+      requiredが設定されている場合は入力チェックを行います。
+      errorの発生や消去のタイミングでそれぞれ error イベントが発火します。
+    `
   })
   .add('Modal', () => {
     return {
@@ -187,6 +246,11 @@ storiesOf('Molecules', module)
         }
       }
     }
+  }, {
+    notes: `
+      モーダルです。
+      モーダル自体の開閉のステータスは親で持つ必要があります。
+    `
   })
   .add('Tab', () => {
     return {
@@ -208,4 +272,16 @@ storiesOf('Molecules', module)
         }
       }
     }
+  }, {
+    notes: `
+      タブUIです。
+      slotに並べる要素は必ずdivなどで囲んでください。
+
+      tabs配列のインタフェース
+      ==
+      {
+      --id: string（一意のID。ただし文字列）
+      --display: string（表示するテキスト）
+      }
+    `
   })
