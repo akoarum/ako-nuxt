@@ -2,6 +2,7 @@ import { configure, addDecorator } from '@storybook/vue'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Decorator from './Decorator'
+import '../app/plugins/displayDate'
 
 Vue.use(Vuex)
 
