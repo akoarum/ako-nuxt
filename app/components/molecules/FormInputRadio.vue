@@ -6,7 +6,7 @@
           :name="name"
           :value="item.value"
           :label="item.display"
-          :checked-value="value"
+          :checked="value"
           :required="required"
           :disabled="disabled"
           @change="changeHandler"
