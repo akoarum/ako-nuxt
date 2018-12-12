@@ -10,7 +10,7 @@
         role="tab"
         type="button"
         @click="$emit('update', tab.id)"
-        @keyup.39.37="keyupHandler($event, tab)"
+        @keyup.35.36.37.39="keyupHandler($event, tab)"
       >
         {{ tab.display }}
       </button>
@@ -39,14 +39,21 @@ export default {
     keyupHandler(event) {
       const index = this.tabIds.indexOf(this.current)
 
-      if (event.keyCode === 37) {
-        if (index === 0) return
-        this.$emit('update', this.tabIds[index - 1])
-      }
-
-      if (event.keyCode === 39) {
-        if (index === this.tabIds.length - 1) return
-        this.$emit('update', this.tabIds[index + 1])
+      switch (event.keyCode) {
+        case 35:
+          this.$emit('update', this.tabIds[this.tabIds.length - 1])
+          break
+        case 36:
+          this.$emit('update', this.tabIds[0])
+          break
+        case 37:
+          if (index === 0) return
+          this.$emit('update', this.tabIds[index - 1])
+          break
+        case 39:
+          if (index === this.tabIds.length - 1) return
+          this.$emit('update', this.tabIds[index + 1])
+          break
       }
     }
   }
