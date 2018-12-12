@@ -7,7 +7,7 @@
       :aria-labelledby="ariaLabelledby"
       :aria-describedby="ariaDescribedby"
       :aria-invalid="String(error)"
-      :checked="value === checkedValue"
+      :checked="value === checked"
       type="radio"
       @change="$emit('change', $event.target.value)"
     />
@@ -21,7 +21,7 @@ export default {
     name: { type: String, required: true },
     value: { type: String, required: true },
     label: { type: String, required: true },
-    checkedValue: { type: String, required: true },
+    checked: { type: String, required: true },
     ariaLabel: { type: String },
     ariaLabelledby: { type: String },
     ariaDescribedby: { type: String },
