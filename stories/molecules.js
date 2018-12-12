@@ -10,6 +10,7 @@ import FormInputCheckbox from '~/components/molecules/FormInputCheckbox'
 import FormSelect from '~/components/molecules/FormSelect'
 import FormTextarea from '~/components/molecules/FormTextarea'
 import Modal from '~/components/molecules/Modal'
+import Tab from '~/components/molecules/Tab'
 
 storiesOf('Molecules', module)
   .addDecorator(VueInfoAddon)
@@ -183,6 +184,27 @@ storiesOf('Molecules', module)
       data() {
         return {
           open: false
+        }
+      }
+    }
+  })
+  .add('Tab', () => {
+    return {
+      components: { Tab },
+      template: `
+        <Tab :tabs="tabs">
+          <div>Item1</div>
+          <div>Item2</div>
+          <div>Item3</div>
+        </Tab>
+      `,
+      data() {
+        return {
+          tabs: [
+            { id: '1', display: 'Item1' },
+            { id: '2', display: 'Item2' },
+            { id: '3', display: 'Item3' }
+          ]
         }
       }
     }

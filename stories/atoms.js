@@ -18,6 +18,7 @@ import VSelect from '~/components/atoms/VSelect'
 import VIconClose from '~/components/atoms/VIcon/VIconClose'
 import VContent from '~/components/atoms/VContent'
 import VTable from '~/components/atoms/VTable'
+import VTabs from '~/components/atoms/VTabs'
 
 storiesOf('Atoms', module)
   .addDecorator(VueInfoAddon)
@@ -372,3 +373,34 @@ storiesOf('Atoms', module)
       }
     }
   }))
+  .add('VTabs', () => {
+    const current = select('Current', {
+      '1': '1',
+      '2': '2',
+      '3': '3'
+    }, '1')
+
+    return {
+      components: { VTabs },
+      template: `
+        <VTabs :tabs="tabs"
+              :current="current"
+              :id="id"
+              @update="updateHandler" />
+      `,
+      data() {
+        return {
+          tabs: [
+            { id: '1', display: 'Item1' },
+            { id: '2', display: 'Item2' },
+            { id: '3', display: 'Item3' }
+          ],
+          current,
+          id: 1
+        }
+      },
+      methods: {
+        updateHandler: action('update')
+      }
+    }
+  })
