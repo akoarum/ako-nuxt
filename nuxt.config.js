@@ -26,7 +26,13 @@ export default {
           loader: 'svg-url-loader'
         })
       }
-    }
+    },
+    postcss: [
+      require('autoprefixer')({
+        browsers: ['IE11', 'last 2 versions'],
+        grid: true
+      })
+    ]
   },
   modules: [
     'nuxt-sass-resources-loader',

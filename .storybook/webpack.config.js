@@ -16,6 +16,18 @@ module.exports = storybookConfig => {
         },
       },
       {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: true,
+          plugins: [
+            require('autoprefixer')({
+              browsers: ['IE11', 'last 2 versions'],
+              grid: true
+            }),
+          ],
+        },
+      },
+      {
         loader: 'sass-loader',
         options: {
           data: '@import "setting";',
