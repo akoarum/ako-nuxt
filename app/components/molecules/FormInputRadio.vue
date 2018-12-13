@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { VALIDATES } from '~/functions/variables'
+import { VALIDATES } from '~/assets/js/variables'
 import VInputRadio from '~/components/atoms/VInputRadio'
 import VTexts from '~/components/atoms/VTexts'
 

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import { VALIDATES } from '~/functions/variables'
+import { VALIDATES } from '~/assets/js/variables'
 import FormInputCheckbox from '~/components/molecules/FormInputCheckbox'
 
 const items = [

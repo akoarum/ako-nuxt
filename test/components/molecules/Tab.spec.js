@@ -11,6 +11,13 @@ const wrapperFactory = (propsData = {}) => shallowMount(Tab, {
   propsData: {
     tabs,
     ...propsData
+  },
+  slots: {
+    default: `
+      <div>テスト</div>
+      <div>テスト</div>
+      <div>テスト</div>
+    `
   }
 })
 

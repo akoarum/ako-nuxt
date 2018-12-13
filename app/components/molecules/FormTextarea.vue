@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { VALIDATES } from '~/functions/variables'
+import { VALIDATES } from '~/assets/js/variables'
 import VTextarea from '~/components/atoms/VTextarea'
 import VTexts from '~/components/atoms/VTexts'
 
