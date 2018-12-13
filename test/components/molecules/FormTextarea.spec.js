@@ -19,7 +19,7 @@ describe('FormTextarea', () => {
   it('[watch] value: validateメソッドを実行する', () => {
     const mock = jest.fn().mockReturnValue('')
     wrapper.setMethods({ validate: mock })
-    wrapper.setData({ value: 'test' })
+    wrapper.setProps({ value: 'test' })
 
     expect(mock).toHaveBeenCalled()
   })

@@ -21,6 +21,20 @@ describe('VTabs', () => {
     expect(VTabs.computed.tabIds.call({ tabs })).toEqual(['1', '2', '3'])
   })
 
+  it('[methods] keyupHandler: keyCode=35 の場合、tabs配列最後のIDを持って update を emit する', () => {
+    const wrapper = wrapperFactory()
+
+    wrapper.vm.keyupHandler({ keyCode: 35 })
+    expect(wrapper.emitted().update[0][0]).toBe('3')
+  })
+
+  it('[methods] keyupHandler: keyCode=36 の場合、tabs配列最初のIDを持って update を emit する', () => {
+    const wrapper = wrapperFactory()
+
+    wrapper.vm.keyupHandler({ keyCode: 36 })
+    expect(wrapper.emitted().update[0][0]).toBe('1')
+  })
+
   it('[methods] keyupHandler: keyCode=37 で、current が tabs 配列の先頭でなければ update を emit する', () => {
     const wrapper = wrapperFactory()
 
