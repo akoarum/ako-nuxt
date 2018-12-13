@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
+import { VALIDATES } from '~/assets/js/variables'
 import FormInputText from '~/components/molecules/FormInputText'
-import { VALIDATES } from '~/functions/variables'
 
 const wrapperContainer = (propsData = {}) => mount(FormInputText, {
   propsData: {

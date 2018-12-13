@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { VALIDATES } from '~/functions/variables'
+import { VALIDATES } from '~/assets/js/variables'
 import VInputCheckbox from '~/components/atoms/VInputCheckbox'
 import VTexts from '~/components/atoms/VTexts'
 
