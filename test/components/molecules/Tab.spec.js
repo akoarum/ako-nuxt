@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import Tab from '~/components/molecules/Tab'
+import VTabPanel from '~/components/atoms/VTabPanel'
 
 const tabs = [
   { id: '1', display: 'Item1' },
@@ -14,10 +15,13 @@ const wrapperFactory = (propsData = {}) => shallowMount(Tab, {
   },
   slots: {
     default: `
-      <div>テスト</div>
-      <div>テスト</div>
-      <div>テスト</div>
+      <VTabPanel>テスト</VTabPanel>
+      <VTabPanel>テスト</VTabPanel>
+      <VTabPanel>テスト</VTabPanel>
     `
+  },
+  stubs: {
+    VTabPanel
   }
 })
 

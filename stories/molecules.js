@@ -13,6 +13,8 @@ import FormTextarea from '~/components/molecules/FormTextarea'
 import Modal from '~/components/molecules/Modal'
 import Tab from '~/components/molecules/Tab'
 
+import VTabPanel from '~/components/atoms/VTabPanel'
+
 storiesOf('Molecules', module)
   .addDecorator(VueInfoAddon)
   .addDecorator(withKnobs)
@@ -254,12 +256,12 @@ storiesOf('Molecules', module)
   })
   .add('Tab', () => {
     return {
-      components: { Tab },
+      components: { Tab, VTabPanel },
       template: `
         <Tab :tabs="tabs">
-          <div>Item1</div>
-          <div>Item2</div>
-          <div>Item3</div>
+          <VTabPanel>Item1</VTabPanel>
+          <VTabPanel>Item2</VTabPanel>
+          <VTabPanel>Item3</VTabPanel>
         </Tab>
       `,
       data() {
