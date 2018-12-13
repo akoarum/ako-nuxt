@@ -18,6 +18,8 @@ import VTextarea from '~/components/atoms/VTextarea'
 import VSelect from '~/components/atoms/VSelect'
 import VIconClose from '~/components/atoms/VIcon/VIconClose'
 import VContent from '~/components/atoms/VContent'
+import VFlex from '~/components/atoms/VFlex'
+import VFlexItem from '~/components/atoms/VFlexItem'
 import VTable from '~/components/atoms/VTable'
 import VTabs from '~/components/atoms/VTabs'
 
@@ -434,6 +436,45 @@ storiesOf('Atoms', module)
         tag: 'HTMLの要素を指定します。コンテキストに合わせて、div、section、articleなど使い分けてください。'
       }
     }
+  })
+  .add('VFlex', () => {
+    const pc = select('PC Columns', {
+      '2': '2',
+      '3': '3',
+      '4': '4'
+    }, '4')
+    const sp = select('SP Columns', {
+      '1': '1',
+      '2': '2',
+      '3': '3'
+    }, '2')
+
+    return {
+      components: { VTexts, VFlex, VFlexItem },
+      template: `
+        <VFlex :pc-columns="${Number(pc)}" :sp-columns="${Number(sp)}">
+          <VFlexItem>
+            <VTexts text="あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。" />
+          </VFlexItem>
+          <VFlexItem>
+            <VTexts text="またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど。" />
+          </VFlexItem>
+          <VFlexItem>
+            <VTexts text="いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。" />
+          </VFlexItem>
+          <VFlexItem>
+            <VTexts text="では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。" />
+          </VFlexItem>
+        </VFlex>
+      `
+    }
+  }, {
+    notes: `
+      slotsには必ず <VFlexItem> にしてください。
+      ==
+      pcColumns: PC幅でのカラム数
+      spColumns: SP幅でのカラム数
+    `
   })
   .add('VTable', () => ({
     components: { VTable },

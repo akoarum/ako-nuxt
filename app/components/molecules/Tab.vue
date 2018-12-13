@@ -27,7 +27,7 @@ export default {
   // eslint-disable-next-line no-unused-vars
   render(h) {
     const panels = this.$slots.default
-      .filter(panel => !!panel.tag)
+      .filter(panel => /VTabPanel/i.test(panel.tag))
       .map((panel, i) => {
         const handler = this.tabs[i]
         return (
