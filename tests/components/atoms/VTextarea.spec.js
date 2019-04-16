@@ -1,15 +1,14 @@
----
-to: '<%= test ? `tests/components/${category}/${name}.spec.js` : null %>'
----
 import { shallowMount } from '@vue/test-utils'
-import <%= name %> from '~/components/<%= category %>/<%= name %>'
+import VTextarea from '~/components/atoms/VTextarea'
 
-describe('<%= name %>', () => {
+describe('VTextarea', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(<%= name %>, {
-      propsData: {}
+    wrapper = shallowMount(VTextarea, {
+      propsData: {
+        value: ''
+      }
     })
   })
 

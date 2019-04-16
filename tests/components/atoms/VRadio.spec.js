@@ -1,15 +1,15 @@
----
-to: '<%= test ? `tests/components/${category}/${name}.spec.js` : null %>'
----
 import { shallowMount } from '@vue/test-utils'
-import <%= name %> from '~/components/<%= category %>/<%= name %>'
+import VRadio from '~/components/atoms/VRadio'
 
-describe('<%= name %>', () => {
+describe('VRadio', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(<%= name %>, {
-      propsData: {}
+    wrapper = shallowMount(VRadio, {
+      propsData: {
+        value: '1',
+        checkedValue: ''
+      }
     })
   })
 

@@ -10,12 +10,7 @@ module.exports = {
     '.*\\.(vue)$': 'vue-jest'
   },
   collectCoverageFrom: [
-    '**/*.{js,vue}',
-    '!dist/**',
-    '!**/*.config.js',
-    '!**/node_modules/**',
-    '!**/stories/**',
-    '!__test__/**'
+    'src/*.{js,vue}'
   ],
   coverageReporters: [
     'html',
@@ -25,6 +20,7 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '/node_modules',
     '/dist',
-    '.eslintrc.js'
+    '.eslintrc.js',
+    '/_hygen'
   ]
 }

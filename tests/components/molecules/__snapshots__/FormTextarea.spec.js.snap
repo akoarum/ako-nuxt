@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormTextarea initialized snapshot 1`] = `
+<div
+  class="formTextarea"
+>
+  <vtextarea-stub
+    aria-invalid="false"
+    class="formTextarea__textarea"
+    name="test"
+    required="true"
+    value=""
+  />
+   
+  <!---->
+</div>
+`;

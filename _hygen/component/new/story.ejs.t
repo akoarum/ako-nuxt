@@ -8,4 +8,4 @@ to: '<%= story ? `stories/${category}.js` : null %>'
     template: `
       <<%= name %> />
     `
-  }))
+  }), { info: {} })

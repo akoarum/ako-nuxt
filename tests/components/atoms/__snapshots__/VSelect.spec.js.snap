@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VSelect initialized snapshot 1`] = `
+<div
+  class="vSelect"
+>
+  <label
+    class="vSelect__label"
+  >
+    
+    選択してください
+    
+    <vcaret-stub
+      class="vSelect__icon"
+      height="6"
+      width="10"
+    />
+  </label>
+   
+  <ul
+    class="vSelect__options"
+    name="option"
+    style="display: none;"
+  >
+    <li
+      class="option"
+    >
+      <label
+        class="option__label"
+      >
+        <input
+          class="option__input"
+          type="radio"
+          value="1"
+        />
+         
+        <span
+          class="option__txt"
+        >
+          項目1
+        </span>
+      </label>
+    </li>
+    <li
+      class="option"
+    >
+      <label
+        class="option__label"
+      >
+        <input
+          class="option__input"
+          type="radio"
+          value="2"
+        />
+         
+        <span
+          class="option__txt"
+        >
+          項目2
+        </span>
+      </label>
+    </li>
+    <li
+      class="option"
+    >
+      <label
+        class="option__label"
+      >
+        <input
+          class="option__input"
+          type="radio"
+          value="3"
+        />
+         
+        <span
+          class="option__txt"
+        >
+          項目3
+        </span>
+      </label>
+    </li>
+  </ul>
+</div>
+`;

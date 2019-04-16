@@ -14,7 +14,7 @@ addDecorator(() => ({
   `
 }))
 
-const context = require.context('../src/stories/', true, /^.*?\.js$/)
+const context = require.context('../stories/', true, /^.*?\.js$/)
 
 function loadStories() {
   context.keys().forEach(filename => {
