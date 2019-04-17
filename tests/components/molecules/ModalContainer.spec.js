@@ -21,6 +21,39 @@ describe('ModalContainer', () => {
     })
   })
 
+  describe('computed', () => {
+    it('windowWidth: windowSizeが持つwidthを返す', () => {
+      expect(ModalContainer.computed.windowWidth.call({ windowSize: { width: 600 } })).toBe(600)
+    })
+
+    it('windowHeight: windowSizeが持つheightを返す', () => {
+      expect(ModalContainer.computed.windowHeight.call({ windowSize: { height: 600 } })).toBe(600)
+    })
+
+    describe('contentStyled', () => {
+      it('コンテンツの高さがウィンドウの高さを超えなければ空オブジェクトを返す', () => {
+        const calledObject = {
+          originalHeight: 500,
+          closePosition: 40,
+          windowHeight: 760
+        }
+        expect(ModalContainer.computed.contentStyled.call(calledObject)).toEqual({})
+      })
+
+      it('コンテンツの高さがウィンドウの高さを超えていたらスタイルを指定する', () => {
+        const calledObject = {
+          originalHeight: 500,
+          closePosition: 40,
+          windowHeight: 400
+        }
+        expect(ModalContainer.computed.contentStyled.call(calledObject)).toEqual({
+          '--height': '480px',
+          overflowY: 'scroll'
+        })
+      })
+    })
+  })
+
   describe('methods', () => {
     it('handleClose: closeをemit', () => {
       wrapper.vm.handleClose()
