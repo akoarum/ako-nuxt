@@ -11,7 +11,7 @@ import {
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
 import VTooltip from '~/components/molecules/VTooltip'
-import ModalContainer from '~/components/molecules/ModalContainer'
+import VModal from '~/components/molecules/VModal'
 import FormCheckboxes from '~/components/molecules/FormCheckboxes'
 import FormTextarea from '~/components/molecules/FormTextarea'
 import FormSelect from '~/components/molecules/FormSelect'
@@ -160,13 +160,13 @@ storiesOf('Molecules', module)
       dirty: action('dirty')
     }
   }), { info: {} })
-  .add('ModalContainer', () => ({
-    components: { ModalContainer },
+  .add('VModal', () => ({
+    components: { VModal },
     template: `
       <div>
-        <ModalContainer :is-visible="visible" @close="handleClose">
+        <VModal :is-visible="visible" @close="handleClose">
           <p>吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャー</p>
-        </ModalContainer>
+        </VModal>
         <button ref="handler" type="button" @click="visible = true">表示する</button>
       </div>
     `,

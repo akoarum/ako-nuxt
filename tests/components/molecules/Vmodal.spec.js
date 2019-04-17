@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import ModalContainer from '~/components/molecules/ModalContainer'
+import VModal from '~/components/molecules/VModal'
 
-describe('ModalContainer', () => {
+describe('VModal', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(ModalContainer, {
+    wrapper = shallowMount(VModal, {
       propsData: {
         isVisible: false
       }
@@ -23,11 +23,11 @@ describe('ModalContainer', () => {
 
   describe('computed', () => {
     it('windowWidth: windowSizeが持つwidthを返す', () => {
-      expect(ModalContainer.computed.windowWidth.call({ windowSize: { width: 600 } })).toBe(600)
+      expect(VModal.computed.windowWidth.call({ windowSize: { width: 600 } })).toBe(600)
     })
 
     it('windowHeight: windowSizeが持つheightを返す', () => {
-      expect(ModalContainer.computed.windowHeight.call({ windowSize: { height: 600 } })).toBe(600)
+      expect(VModal.computed.windowHeight.call({ windowSize: { height: 600 } })).toBe(600)
     })
 
     describe('contentStyled', () => {
@@ -37,7 +37,7 @@ describe('ModalContainer', () => {
           closePosition: 40,
           windowHeight: 760
         }
-        expect(ModalContainer.computed.contentStyled.call(calledObject)).toEqual({})
+        expect(VModal.computed.contentStyled.call(calledObject)).toEqual({})
       })
 
       it('コンテンツの高さがウィンドウの高さを超えていたらスタイルを指定する', () => {
@@ -46,7 +46,7 @@ describe('ModalContainer', () => {
           closePosition: 40,
           windowHeight: 400
         }
-        expect(ModalContainer.computed.contentStyled.call(calledObject)).toEqual({
+        expect(VModal.computed.contentStyled.call(calledObject)).toEqual({
           '--height': '480px',
           overflowY: 'scroll'
         })
