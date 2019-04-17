@@ -161,12 +161,16 @@ storiesOf('Atoms', module)
   }), { info: {} })
   .add('VMask', () => ({
     components: { VMask },
+    props: {
+      transparent: { default: boolean('透明', false) }
+    },
     template: `
-      <VMask :style="styles" @click="click" />
+      <VMask :style="styles" :transparent="transparent" @click="click" />
     `,
     computed: {
       styles() {
         return {
+          border: '1px solid #ccc',
           width: '100px',
           height: '100px'
         }

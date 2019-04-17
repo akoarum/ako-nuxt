@@ -18,4 +18,11 @@ describe('VMask', () => {
       expect(wrapper.element).toMatchSnapshot()
     })
   })
+
+  describe('computed', () => {
+    it('styledClass: propsからclass配列を返す', () => {
+      expect(VMask.computed.styledClass.call({ transparent: true })).toEqual(['-transparent'])
+      expect(VMask.computed.styledClass.call({ transparent: false })).toEqual([])
+    })
+  })
 })
