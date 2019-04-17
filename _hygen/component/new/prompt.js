@@ -3,7 +3,7 @@ module.exports = [
     type: "select",
     name: "category",
     message: "category?",
-    choices: ["atoms", "icons", "molecules", "organisms", "projects"]
+    choices: ["atoms", "icons", "molecules", "organisms", "projects", "presenter"]
   },
   {
     type: "input",
