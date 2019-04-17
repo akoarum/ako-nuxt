@@ -10,5 +10,6 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-.<%= h.changeCase.camelCase(name) %> {}
+.<%= h.changeCase.camelCase(name) %> {
+}
 </style>
