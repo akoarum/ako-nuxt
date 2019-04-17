@@ -117,11 +117,14 @@ export default {
     isVisible(newValue) {
       if (newValue) {
         window.addEventListener('resize', this.handleResize)
+        window.addEventListener('keyup', this.handleEscKey)
         this.$nextTick(() => {
           this.updatePositionData()
+          this.$refs.content.$el.focus()
         })
       } else {
         window.removeEventListener('resize', this.handleResize)
+        window.removeEventListener('keyup', this.handleEscKey)
       }
     }
   },
@@ -131,6 +134,11 @@ export default {
       this.resizeTime = setTimeout(() => {
         this.updatePositionData()
       }, 80)
+    },
+    handleEscKey(e) {
+      if (e.keyCode !== 27) return
+      e.preventDefault()
+      this.updateVisible(false)
     },
     updateVisible(newValue) {
       this.isVisible = newValue
