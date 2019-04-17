@@ -10,12 +10,15 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VTooltip from '~/components/molecules/VTooltip'
 import ModalContainer from '~/components/molecules/ModalContainer'
 import FormCheckboxes from '~/components/molecules/FormCheckboxes'
 import FormTextarea from '~/components/molecules/FormTextarea'
 import FormSelect from '~/components/molecules/FormSelect'
 import FormRadios from '~/components/molecules/FormRadios'
 import FormInput from '~/components/molecules/FormInput'
+
+import VTexts from '~/components/atoms/VTexts'
 
 storiesOf('Molecules', module)
   .addDecorator(withInfo)
@@ -178,4 +181,19 @@ storiesOf('Molecules', module)
         this.visible = false
       }
     }
+  }), { info: {} })
+  .add('VTooltip', () => ({
+    components: { VTooltip, VTexts },
+    props: {
+      label: { default: text('ボタンラベル', '？') },
+      content: { default: text('コンテンツテキスト', '吾輩は猫である') },
+      padding: { default: text('周囲のアキ', '90px') }
+    },
+    template: `
+      <div :style="{ padding: padding }">
+        <VTooltip :label="label">
+          <VTexts small style="white-space: nowrap">{{ content }}</VTexts>
+        </VTooltip>
+      </div>
+    `
   }), { info: {} })
