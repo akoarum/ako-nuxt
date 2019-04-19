@@ -2,12 +2,14 @@
   <a class="vLink"><VCaret class="vLink__arrow"/><slot /></a>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
 import { VCaret } from '~/components/icons'
 
-export default {
+@Component({
   components: { VCaret }
-}
+})
+export default class VLink extends Vue {}
 </script>
 
 <style lang="scss" scoped>

@@ -11,26 +11,21 @@
   </label>
 </template>
 
-<script>
-export default {
-  inheritAttrs: false,
-  model: {
-    event: 'change',
-    prop: 'checkedValue'
-  },
-  props: {
-    value: { type: String, required: true },
-    checkedValue: { type: String }
-  },
-  computed: {
-    model: {
-      set(value) {
-        this.$emit('change', value)
-      },
-      get() {
-        return this.checkedValue
-      }
-    }
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+@Component
+export default class VRadio extends Vue {
+  private inheritAttrs = false
+  @Prop() public value: string
+  @Prop() public checkedValue?: string
+
+  public set(value: string) {
+    this.$emit('change', value)
+  }
+
+  public get(): string {
+    return this.checkedValue
   }
 }
 </script>

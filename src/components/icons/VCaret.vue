@@ -2,26 +2,26 @@
   <span :style="styled" class="vCaret"></span>
 </template>
 
-<script>
-export default {
-  props: {
-    width: { type: Number },
-    height: { type: Number }
-  },
-  computed: {
-    styled() {
-      const styles = {}
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
-      if (this.width) {
-        styles['--width'] = `${this.width}px`
-      }
+@Component
+export default class VCaret extends Vue {
+  @Prop() public width?: number
+  @Prop() public height?: number
 
-      if (this.height) {
-        styles['--height'] = `${this.height}px`
-      }
+  public get styled(): { [index: string]: string } {
+    const styles = {}
 
-      return styles
+    if (this.width) {
+      styles['--width'] = `${this.width}px`
     }
+
+    if (this.height) {
+      styles['--height'] = `${this.height}px`
+    }
+
+    return styles
   }
 }
 </script>

@@ -11,26 +11,21 @@
   </label>
 </template>
 
-<script>
-export default {
-  inheritAttrs: false,
-  model: {
-    prop: 'checkedValue',
-    event: 'change'
-  },
-  props: {
-    value: { type: String, required: true },
-    checkedValue: { type: Array, default: () => [] }
-  },
-  computed: {
-    model: {
-      set(value) {
-        this.$emit('change', value)
-      },
-      get() {
-        return this.checkedValue
-      }
-    }
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+@Component
+export default class VCheckbox extends Vue {
+  private inheritAttrs = false
+  @Prop() public value!: string
+  @Prop() public checkedValue: boolean = false
+
+  public set model(value: boolean) {
+    this.$emit('change', value)
+  }
+
+  public get model(): boolean {
+    return this.checkedValue
   }
 }
 </script>

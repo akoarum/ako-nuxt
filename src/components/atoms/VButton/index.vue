@@ -10,20 +10,18 @@
   </button>
 </template>
 
-<script>
-export default {
-  name: 'VButton',
-  inheritAttrs: true,
-  props: {
-    secondary: { type: Boolean },
-    caution: { type: Boolean }
-  },
-  computed: {
-    styledClass() {
-      if (this.secondary) return '-secondary'
-      if (this.caution) return '-caution'
-      return ''
-    }
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+@Component
+export default class VButton extends Vue {
+  @Prop() public secondary?: boolean
+  @Prop() public caution?: boolean
+
+  public get styledClass(): string {
+    if (this.secondary) return '-secondary'
+    if (this.caution) return '-caution'
+    return ''
   }
 }
 </script>

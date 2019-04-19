@@ -1,4 +1,4 @@
-export const VALIDATES = {
+export const VALIDATES: { [index: string]: any } = {
   required: '入力してください。',
   selected: '選択してください。',
   tel: {

@@ -26,66 +26,65 @@
   </div>
 </template>
 
-<script>
-import { VALIDATES } from '~/utils/variables'
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { VALIDATES } from '~/utils/variables.ts'
 import { VInput, VTexts } from '~/components/atoms'
 
-export default {
-  components: { VInput, VTexts },
-  inheritAttrs: false,
-  props: {
-    name: { type: String, required: true },
-    type: { type: String, required: true },
-    value: { type: String, required: true },
-    required: { type: Boolean }
-  },
-  data() {
-    return {
-      error: '',
-      isDirty: !!this.value || !this.required
-    }
-  },
-  computed: {
-    model: {
-      set(value) {
-        this.$emit('input', value)
-        this.error = this.validate(value)
-      },
-      get() {
-        return this.value
-      }
-    }
-  },
-  watch: {
-    error(value) {
-      this.$emit('error', { name: this.name, error: !!value })
-    },
-    isDirty() {
-      this.$emit('dirty', this.name)
-    }
-  },
-  methods: {
-    validate(value) {
-      if (!value) {
-        if (!this.required || !this.isDirty) {
-          return ''
-        }
-        return VALIDATES.required
-      }
+@Component({
+  components: { VInput, VTexts }
+})
+export default class FormInput extends Vue {
+  private inheritAttrs = false
 
-      if (this.type in VALIDATES) {
-        if (!VALIDATES[this.type].regex.test(value)) {
-          return VALIDATES[this.type].message
-        }
-      }
+  @Prop() name!: string
+  @Prop() type: string = 'text'
+  @Prop() value!: string
+  @Prop() required?: boolean
 
-      return ''
-    },
-    updateDirty() {
-      if (!this.value || this.isDirty) return false
-      this.isDirty = true
-      this.error = this.validate(this.value)
+  public error: string = ''
+  public isDirty: boolean = !!this.value || !this.required
+
+  public set model(value: string) {
+    this.$emit('input', value)
+    this.error = this.validate(value)
+  }
+
+  public get model(): string {
+    return this.value
+  }
+
+  @Watch('error')
+  public emitError(value: string) {
+    this.$emit('error', { name: this.name, error: !!value })
+  }
+
+  @Watch('isDirty')
+  public emitDirty() {
+    this.$emit('dirty', this.name)
+  }
+
+  public validate(value: string): string {
+    if (!value) {
+      if (!this.required || !this.isDirty) {
+        return ''
+      }
+      return VALIDATES.required
     }
+
+    if (this.type in VALIDATES) {
+      if (!VALIDATES[this.type].regex.test(value)) {
+        return VALIDATES[this.type].message
+      }
+    }
+
+    return ''
+  }
+
+  public updateDirty() {
+    if (!this.value || this.isDirty) return false
+    this.isDirty = true
+    this.error = this.validate(this.value)
   }
 }
 </script>

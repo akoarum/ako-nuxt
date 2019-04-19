@@ -26,62 +26,61 @@
   </div>
 </template>
 
-<script>
-import { VALIDATES } from '~/utils/variables'
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { VALIDATES } from '~/utils/variables.ts'
 import { VTextarea, VTexts } from '~/components/atoms'
 
-export default {
-  components: { VTextarea, VTexts },
-  inheritAttrs: false,
-  props: {
-    name: { type: String, required: true },
-    value: { type: String, required: true },
-    required: { type: Boolean },
-    minlength: { type: Number },
-    maxlength: { type: Number }
-  },
-  data() {
-    return {
-      error: '',
-      isDirty: !!this.value || !this.required
+@Component({
+  components: { VTextarea, VTexts }
+})
+export default class FormTextarea extends Vue {
+  private inheritAttrs = false
+
+  @Prop() public name!: string
+  @Prop() public value!: string
+  @Prop() public required?: boolean
+  @Prop() public minlength?: number
+  @Prop() public maxlength?: number
+
+  public error: string = ''
+  public isDirty: boolean = !!this.value || !this.required
+
+  public set model(value: string) {
+    this.$emit('input', value)
+    this.error = this.validate(value)
+  }
+
+  public get model(): string {
+    return this.value
+  }
+
+  @Watch('error')
+  public emitError(value) {
+    this.$emit('error', { name: this.name, error: !!value })
+  }
+
+  @Watch('isDirty')
+  public emitDirty() {
+    this.$emit('dirty', this.name)
+  }
+
+  public validate(value: string): string {
+    if (!this.isDirty) return ''
+    if (this.required && !value) return VALIDATES.required
+    if (this.minlength && value.length < this.minlength) {
+      return `${this.minlength}字以上で入力して下さい。`
     }
-  },
-  computed: {
-    model: {
-      set(value) {
-        this.$emit('input', value)
-        this.error = this.validate(value)
-      },
-      get() {
-        return this.value
-      }
+    if (this.maxlength && value.length > this.maxlength) {
+      return `${this.maxlength}字以内で入力して下さい。`
     }
-  },
-  watch: {
-    error(value) {
-      this.$emit('error', { name: this.name, error: !!value })
-    },
-    isDirty() {
-      this.$emit('dirty', this.name)
-    }
-  },
-  methods: {
-    validate(value) {
-      if (!this.isDirty) return ''
-      if (this.required && !value) return VALIDATES.required
-      if (this.minlength && value.length < this.minlength) {
-        return `${this.minlength}字以上で入力して下さい。`
-      }
-      if (this.maxlength && value.length > this.maxlength) {
-        return `${this.maxlength}字以内で入力して下さい。`
-      }
-      return ''
-    },
-    updateDirty() {
-      if (!this.value || this.isDirty) return false
-      this.isDirty = true
-      this.error = this.validate(this.value)
-    }
+    return ''
+  }
+
+  public updateDirty() {
+    if (!this.value || this.isDirty) return false
+    this.isDirty = true
+    this.error = this.validate(this.value)
   }
 }
 </script>

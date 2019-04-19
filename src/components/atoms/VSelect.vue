@@ -25,39 +25,38 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import { VCaret } from '~/components/icons'
 
-export default {
-  components: { VCaret },
-  inheritAttrs: false,
-  model: {
-    event: 'change',
-    prop: 'checkedValue'
-  },
-  props: {
-    options: { type: Array, required: true },
-    checkedValue: { type: String }
-  },
-  data() {
-    return {
-      optionVisible: false
-    }
-  },
-  computed: {
-    selectedView() {
-      if (!this.checkedValue) return '選択してください'
-      return this.options.find(option => option.value === this.checkedValue)
-        .label
-    }
-  },
-  methods: {
-    isSelected(value) {
-      return this.checkedValue === value
-    },
-    updateOptionView(status) {
-      this.optionVisible = status
-    }
+interface Option {
+  id: number
+  value: string
+  label: string
+}
+
+@Component({
+  components: { VCaret }
+})
+export default class VSelect extends Vue {
+  private inheritAttrs = false
+
+  @Prop() public options!: Option[]
+  @Prop() public checkedValue: string
+
+  public optionVisible: boolean = false
+
+  public get selectedView(): string {
+    if (!this.checkedValue) return '選択してください'
+    return this.options.find(option => option.value === this.checkedValue).label
+  }
+
+  public isSelected(value: string): boolean {
+    return this.checkedValue === value
+  }
+
+  public updateOptionView(status: boolean) {
+    this.optionVisible = status
   }
 }
 </script>

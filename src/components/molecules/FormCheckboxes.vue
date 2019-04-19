@@ -33,65 +33,66 @@
   </div>
 </template>
 
-<script>
-import { VALIDATES } from '~/utils/variables'
-import VCheckbox from '~/components/atoms/VCheckbox'
-import VTexts from '~/components/atoms/VTexts'
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { VALIDATES } from '~/utils/variables.ts'
+import { VCheckbox, VTexts } from '~/components/atoms'
 
-export default {
-  components: { VCheckbox, VTexts },
-  inheritAttrs: false,
-  model: {
-    event: 'change'
-  },
-  props: {
-    name: { type: String, required: true },
-    selects: { type: Array, required: true },
-    value: { type: Array },
-    required: { type: Boolean },
-    min: { type: Number },
-    max: { type: Number }
-  },
-  data() {
-    return {
-      error: '',
-      isDirty: !!this.value.length || !this.required
+interface Select {
+  id: number
+  value: string
+  label: string
+}
+
+@Component({
+  components: { VCheckbox, VTexts }
+})
+export default class FormCheckboxes extends Vue {
+  private inheritAttrs = false
+
+  @Prop() public name!: string
+  @Prop() public selects!: Select[]
+  @Prop() public value: string[]
+  @Prop() public required?: boolean
+  @Prop() public min?: number
+  @Prop() public max?: number
+
+  public error: string = ''
+  public isDirty: boolean = !!this.value.length || !this.required
+
+  public set model(values: string[]) {
+    this.$emit('change', values)
+    this.error = this.validate(values)
+  }
+
+  public get model(): string[] {
+    return this.value
+  }
+
+  @Watch('error')
+  public emitError(value: string) {
+    this.$emit('error', { name: this.name, error: !!value })
+  }
+
+  @Watch('isDirty')
+  public emitDirty() {
+    this.$emit('dirty', this.name)
+  }
+
+  public validate(values: string[]): string {
+    if (!this.required) return ''
+    if (!this.isDirty) return ''
+    if (!values.length) return VALIDATES.selected
+    if (this.min && values.length < this.min) {
+      return `${this.min}個以上選択してください。`
     }
-  },
-  computed: {
-    model: {
-      set(value) {
-        this.$emit('change', value)
-        this.error = this.validate(value)
-      },
-      get() {
-        return this.value
-      }
+    if (this.max && values.length > this.max) {
+      return `${this.max}個以内で選択してください。`
     }
-  },
-  watch: {
-    error(value) {
-      this.$emit('error', { name: this.name, error: !!value })
-    },
-    isDirty() {
-      this.$emit('dirty', this.name)
-    }
-  },
-  methods: {
-    validate(value) {
-      if (!this.required) return ''
-      if (!this.isDirty) return ''
-      if (!value.length) return VALIDATES.selected
-      if (this.min && value.length < this.min) {
-        return `${this.min}個以上選択してください。`
-      }
-      if (this.max && value.length > this.max) {
-        return `${this.max}個以内で選択してください。`
-      }
-    },
-    updateDirty() {
-      this.isDirty = true
-    }
+  }
+
+  public updateDirty() {
+    this.isDirty = true
   }
 }
 </script>

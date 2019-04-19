@@ -5,8 +5,11 @@ to: src/components/<%= category %>/<%= name %>.vue
   <div class="<%= h.changeCase.camelCase(name) %>"></div>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class <%= name %> extends Vue {}
 </script>
 
 <style lang="scss" scoped>

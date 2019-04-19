@@ -2,21 +2,21 @@
   <div class="vMask" :class="styledClass" @click="$emit('click')" />
 </template>
 
-<script>
-export default {
-  props: {
-    transparent: { type: Boolean }
-  },
-  computed: {
-    styledClass() {
-      const classes = []
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
-      if (this.transparent) {
-        classes.push('-transparent')
-      }
+@Component
+export default class VMask extends Vue {
+  @Prop() public transparent?: boolean
 
-      return classes
+  public get styledClass(): string[] {
+    const classes = []
+
+    if (this.transparent) {
+      classes.push('-transparent')
     }
+
+    return classes
   }
 }
 </script>

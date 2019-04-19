@@ -10,7 +10,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default {
+export default Vue.extend({
   name: 'Decorator',
   store: new Vuex.Store({
     state: {},
@@ -25,7 +25,7 @@ export default {
       }
     }
   })
-}
+})
 </script>
 
 <style lang="scss">

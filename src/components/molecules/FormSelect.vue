@@ -23,58 +23,60 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { VSelect, VTexts } from '~/components/atoms'
-import { VALIDATES } from '~/utils/variables'
+import { VALIDATES } from '~/utils/variables.ts'
 
-export default {
-  components: { VSelect, VTexts },
-  inheritAttrs: false,
-  model: {
-    event: 'change'
-  },
-  props: {
-    name: { type: String, required: true },
-    options: { type: Array, required: true },
-    value: { type: String },
-    required: { type: Boolean }
-  },
-  data() {
-    return {
-      error: '',
-      isDirty: !!this.value || !this.required
-    }
-  },
-  computed: {
-    model: {
-      set(value) {
-        this.$emit('change', value)
-        this.error = this.validate(value)
-        this.updateDirty(value)
-      },
-      get() {
-        return this.value
-      }
-    }
-  },
-  watch: {
-    error(value) {
-      this.$emit('error', { name: this.name, error: !!value })
-    },
-    isDirty() {
-      this.$emit('dirty', this.name)
-    }
-  },
-  methods: {
-    validate(value) {
-      if (!this.required || !this.isDirty) return ''
-      if (!value) return VALIDATES.selected
-      return ''
-    },
-    updateDirty(value) {
-      if (!value || this.isDirty) return
-      this.isDirty = true
-    }
+interface Option {
+  id: number
+  value: string
+  label: string
+}
+
+@Component({
+  components: { VSelect, VTexts }
+})
+export default class FormSelect extends Vue {
+  private inheritAttrs = false
+
+  @Prop() public name!: string
+  @Prop() public options!: Option[]
+  @Prop() public value?: string
+  @Prop() public required?: boolean
+
+  public error: string = ''
+  public isDirty: boolean = !!this.value || !this.required
+
+  public set model(value: string) {
+    this.$emit('change', value)
+    this.error = this.validate(value)
+    this.updateDirty(value)
+  }
+
+  public get model(): string {
+    return this.value
+  }
+
+  @Watch('error')
+  public emitError(value: string) {
+    this.$emit('error', { name: this.name, error: !!value })
+  }
+
+  @Watch('isDirty')
+  public emitDirty() {
+    this.$emit('dirty', this.name)
+  }
+
+  public validate(value: string): string {
+    if (!this.required || !this.isDirty) return ''
+    if (!value) return VALIDATES.selected
+    return ''
+  }
+
+  public updateDirty(value: string) {
+    if (!value || this.isDirty) return
+    this.isDirty = true
   }
 }
 </script>

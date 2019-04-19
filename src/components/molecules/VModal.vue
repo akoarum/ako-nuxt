@@ -23,89 +23,93 @@
   </transition>
 </template>
 
-<script>
-import WindowSize from '~/utils/WindowSize'
-import { VClose } from '~/components/icons'
-import { VContainer, VMask } from '~/components/atoms'
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import WindowSize from '~/utils/WindowSize.ts'
+import { VClose } from '~/components/icons/index.ts'
+import { VContainer, VMask } from '~/components/atoms/index.ts'
 
-export default {
-  components: { VClose, VContainer, VMask },
-  props: {
-    isVisible: { type: Boolean, required: true }
-  },
-  data() {
-    return {
-      windowSize: new WindowSize().initialize(),
-      resizeTime: null,
-      originalHeight: 0,
-      contentPosition: 0,
-      closePosition: 0
-    }
-  },
-  computed: {
-    windowWidth() {
-      return this.windowSize.width
-    },
-    windowHeight() {
-      return this.windowSize.height
-    },
-    contentStyled() {
-      const styles = {}
+@Component({
+  components: { VClose, VContainer, VMask }
+})
+export default class VModal extends Vue {
+  @Prop() public isVisible!: boolean
 
-      if (this.originalHeight + this.closePosition > this.windowHeight) {
-        styles['--height'] = `${this.windowHeight + this.closePosition * 2}px`
-        styles.overflowY = 'scroll'
-      }
+  public windowSize = new WindowSize().initialize()
+  public resizeTime = null
+  public originalHeight: number = 0
+  public contentPosition: number = 0
+  public closePosition: number = 0
 
-      return styles
+  public get windowWidth(): number {
+    return this.windowSize.width
+  }
+
+  public get windowHeight(): number {
+    return this.windowSize.height
+  }
+
+  public get contentStyled(): { [index: string]: string } {
+    const styles: { [index: string]: string } = {}
+
+    if (this.originalHeight + this.closePosition > this.windowHeight) {
+      styles['--height'] = `${this.windowHeight + this.closePosition * 2}px`
+      styles.overflowY = 'scroll'
     }
-  },
-  watch: {
-    isVisible(visible) {
-      if (visible) {
-        window.addEventListener('keyup', this.handleEscKey)
-        window.addEventListener('resize', this.handleResize)
-        this.$nextTick(() => {
-          this.updateSize()
-        })
-      } else {
-        window.removeEventListener('keyup', this.handleEscKey)
-        window.removeEventListener('resize', this.handleResize)
-      }
-    }
-  },
-  mounted() {
-    window.addEventListener('keyup', this.handleKeyup)
-  },
-  methods: {
-    handleClose() {
-      this.$emit('close')
-    },
-    handleResize() {
-      clearTimeout(this.resizeTime)
-      this.resizeTime = setTimeout(() => {
+
+    return styles
+  }
+
+  @Watch('isVisible')
+  public updateVisible(visible: boolean) {
+    if (visible) {
+      window.addEventListener('keyup', this.handleEscKey)
+      window.addEventListener('resize', this.handleResize)
+      this.$nextTick(() => {
         this.updateSize()
-      }, 80)
-    },
-    handleEscKey(e) {
-      if (e.keyCode !== 27) return
-      e.preventDefault()
-      this.$emit('close')
-    },
-    updateFocus() {
-      if (this.isVisible) {
-        this.$refs.close.focus()
-      }
-    },
-    updateSize() {
-      this.$refs.content.$el.style.height = 'auto'
-      this.originalHeight = this.$refs.content.$el.clientHeight
-      this.contentPosition = this.$refs.content.$el.getBoundingClientRect().y
-      this.closePosition = parseFloat(
-        window.getComputedStyle(this.$refs.close).top
-      )
-      this.$refs.content.$el.style.height = ''
+      })
+    } else {
+      window.removeEventListener('keyup', this.handleEscKey)
+      window.removeEventListener('resize', this.handleResize)
     }
+  }
+
+  public handleClose() {
+    this.$emit('close')
+  }
+
+  public handleResize() {
+    clearTimeout(this.resizeTime)
+    this.resizeTime = setTimeout(() => {
+      this.updateSize()
+    }, 80)
+  }
+
+  public handleEscKey(e) {
+    if (e.keyCode !== 27) return
+    e.preventDefault()
+    this.$emit('close')
+  }
+
+  public updateFocus() {
+    const isElement = (x: any): x is Element => x instanceof Element
+    const { close } = this.$refs
+
+    if (!isElement(close)) return
+
+    if (this.isVisible) {
+      close.focus()
+    }
+  }
+
+  public updateSize() {
+    this.$refs.content.$el.style.height = 'auto'
+    this.originalHeight = this.$refs.content.$el.clientHeight
+    this.contentPosition = this.$refs.content.$el.getBoundingClientRect().y
+    this.closePosition = parseFloat(
+      window.getComputedStyle(this.$refs.close).top
+    )
+    this.$refs.content.$el.style.height = ''
   }
 }
 </script>

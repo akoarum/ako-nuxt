@@ -4,26 +4,26 @@
   </p>
 </template>
 
-<script>
-export default {
-  props: {
-    caution: { type: Boolean },
-    small: { type: Boolean }
-  },
-  computed: {
-    styledClasses() {
-      const classes = []
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
-      if (this.caution) {
-        classes.push('-caution')
-      }
+@Component
+export default class VTexts extends Vue {
+  @Prop() public caution?: boolean
+  @Prop() public small?: boolean
 
-      if (this.small) {
-        classes.push('-small')
-      }
+  public get styledClass(): string[] {
+    const classes = []
 
-      return classes
+    if (this.caution) {
+      classes.push('-caution')
     }
+
+    if (this.small) {
+      classes.push('-small')
+    }
+
+    return classes
   }
 }
 </script>

@@ -1,7 +1,7 @@
 import { configure, addDecorator } from '@storybook/vue'
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Decorator from './Decorator'
+import Decorator from './Decorator.vue'
 
 Vue.use(Vuex)
 

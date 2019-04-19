@@ -32,127 +32,127 @@
   </div>
 </template>
 
-<script>
-import WindowSize from '~/utils/WindowSize'
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import WindowSize from '~/utils/WindowSize.ts'
 import { FadeTransition } from '~/components/presenter'
 import { VBalloon, VMask } from '~/components/atoms'
 
-export default {
-  components: { FadeTransition, VBalloon, VMask },
-  props: {
-    label: { type: String, required: true }
-  },
-  data() {
+@Component({
+  components: { FadeTransition, VBalloon, VMask }
+})
+export default class VTooltip extends Vue {
+  @Prop() public label!: string
+  public isVisible: boolean = false
+  public windowSize = new WindowSize().initialize()
+  public contentSize = {
+    width: 0,
+    height: 0
+  }
+  public btnRect = {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0
+  }
+  public resizeTime = null
+
+  public get componentId(): number {
+    return this._uid
+  }
+
+  public get windowWidth(): number {
+    return this.windowSize.width
+  }
+
+  public get contentStyled(): { [index: string]: string } {
+    let styles: { [index: string]: string } = {}
+
+    styles = Object.assign({}, styles, this.leftPositionStyled)
+    styles = Object.assign({}, styles, this.verticalPositionStyled)
+
+    return styles
+  }
+
+  public get basePosition(): { [index: string]: number } {
     return {
-      isVisible: false,
-      windowSize: new WindowSize().initialize(),
-      contentSize: {
-        width: 0,
-        height: 0
-      },
-      btnRect: {
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0
-      },
-      resizeTime: null
+      x: this.btnRect.x + this.btnRect.width / 2,
+      y: this.btnRect.y
     }
-  },
-  computed: {
-    componentId() {
-      return this._uid
-    },
-    windowWidth() {
-      return this.windowSize.width
-    },
-    contentStyled() {
-      let styles = {}
+  }
 
-      styles = Object.assign({}, styles, this.leftPositionStyled)
-      styles = Object.assign({}, styles, this.verticalPositionStyled)
+  public get leftPositionStyled(): { [index: string]: string } {
+    const styles: { [index: string]: string } = {}
 
-      return styles
-    },
-    basePosition() {
-      return {
-        x: this.btnRect.x + this.btnRect.width / 2,
-        y: this.btnRect.y
-      }
-    },
-    leftPositionStyled() {
-      const styles = {}
-
-      if (this.basePosition.x - this.contentSize.width / 2 > 0) {
-        if (
-          this.basePosition.x + this.contentSize.width / 2 >
-          this.windowWidth
-        ) {
-          const position =
-            this.windowWidth - this.contentSize.width - this.btnRect.x
-          styles.left = `${position}px`
-        } else {
-          styles.left = '50%'
-          styles.transform = 'translateX(-50%)'
-        }
+    if (this.basePosition.x - this.contentSize.width / 2 > 0) {
+      if (this.basePosition.x + this.contentSize.width / 2 > this.windowWidth) {
+        const position =
+          this.windowWidth - this.contentSize.width - this.btnRect.x
+        styles.left = `${position}px`
       } else {
-        styles.left = `-${this.btnRect.x}px`
+        styles.left = '50%'
+        styles.transform = 'translateX(-50%)'
       }
-
-      return styles
-    },
-    verticalPositionStyled() {
-      const styles = {}
-
-      if (this.basePosition.y - this.contentSize.height - 14 > 0) {
-        styles.top = `-${this.contentSize.height + 14}px`
-      } else {
-        styles.top = 'calc(100% + 14px)'
-      }
-
-      return styles
+    } else {
+      styles.left = `-${this.btnRect.x}px`
     }
-  },
-  watch: {
-    isVisible(newValue) {
-      if (newValue) {
-        window.addEventListener('resize', this.handleResize)
-        window.addEventListener('keyup', this.handleEscKey)
-        this.$nextTick(() => {
-          this.updatePositionData()
-          this.$refs.content.$el.focus()
-        })
-      } else {
-        window.removeEventListener('resize', this.handleResize)
-        window.removeEventListener('keyup', this.handleEscKey)
-      }
+
+    return styles
+  }
+
+  public get verticalPositionStyled(): { [index: string]: string } {
+    const styles: { [index: string]: string } = {}
+
+    if (this.basePosition.y - this.contentSize.height - 14 > 0) {
+      styles.top = `-${this.contentSize.height + 14}px`
+    } else {
+      styles.top = 'calc(100% + 14px)'
     }
-  },
-  methods: {
-    handleResize() {
-      clearTimeout(this.resizeTime)
-      this.resizeTime = setTimeout(() => {
+
+    return styles
+  }
+
+  @Watch('isVisible')
+  public toggleVisible(newValue: boolean) {
+    if (newValue) {
+      window.addEventListener('resize', this.handleResize)
+      window.addEventListener('keyup', this.handleEscKey)
+      this.$nextTick(() => {
         this.updatePositionData()
-      }, 80)
-    },
-    handleEscKey(e) {
-      if (e.keyCode !== 27) return
-      e.preventDefault()
-      this.updateVisible(false)
-    },
-    updateVisible(newValue) {
-      this.isVisible = newValue
-    },
-    updatePositionData() {
-      if (!this.$refs.btn) return false
-      const btnRect = this.$refs.btn.getBoundingClientRect()
-      this.contentSize.width = this.$refs.content.$el.clientWidth
-      this.contentSize.height = this.$refs.content.$el.clientHeight
-      this.btnRect.x = btnRect.x
-      this.btnRect.y = btnRect.y
-      this.btnRect.width = btnRect.width
-      this.btnRect.height = btnRect.height
+        this.$refs.content.$el.focus()
+      })
+    } else {
+      window.removeEventListener('resize', this.handleResize)
+      window.removeEventListener('keyup', this.handleEscKey)
     }
+  }
+
+  public handleResize() {
+    clearTimeout(this.resizeTime)
+    this.resizeTime = setTimeout(() => {
+      this.updatePositionData()
+    }, 80)
+  }
+
+  public handleEscKey(e) {
+    if (e.keyCode !== 27) return
+    e.preventDefault()
+    this.updateVisible(false)
+  }
+
+  public updateVisible(newValue) {
+    this.isVisible = newValue
+  }
+
+  public updatePositionData() {
+    if (!this.$refs.btn) return false
+    const btnRect = this.$refs.btn.getBoundingClientRect()
+    this.contentSize.width = this.$refs.content.$el.clientWidth
+    this.contentSize.height = this.$refs.content.$el.clientHeight
+    this.btnRect.x = btnRect.x
+    this.btnRect.y = btnRect.y
+    this.btnRect.width = btnRect.width
+    this.btnRect.height = btnRect.height
   }
 }
 </script>

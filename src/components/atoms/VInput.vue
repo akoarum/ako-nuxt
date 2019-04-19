@@ -9,12 +9,13 @@
   />
 </template>
 
-<script>
-export default {
-  inheritAttrs: false,
-  props: {
-    value: { type: String, required: true }
-  }
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+@Component
+export default class VInput extends Vue {
+  private inheritAttrs = false
+  @Prop() public value: string
 }
 </script>
 

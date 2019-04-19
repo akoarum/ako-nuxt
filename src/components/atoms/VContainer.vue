@@ -4,21 +4,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    maxWidth: { type: String }
-  },
-  computed: {
-    styled() {
-      const style = {}
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
-      if (this.maxWidth) {
-        style['--maxWidth'] = this.maxWidth
-      }
+@Component
+export default class VContainer extends Vue {
+  @Prop() public maxWidth?: string
 
-      return style
+  public get styled(): { [index: string]: string } {
+    const style = {}
+
+    if (this.maxWidth) {
+      style['--maxWidth'] = this.maxWidth
     }
+
+    return style
   }
 }
 </script>

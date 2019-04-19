@@ -1,6 +1,7 @@
+import NuxtConfiguration from '@nuxt/config'
 const env = process.env.NODE_ENV
 
-let apiUrl
+let apiUrl: string
 switch (env) {
   case 'local':
     apiUrl = 'http://localhost:3333'
@@ -17,7 +18,7 @@ switch (env) {
     break
 }
 
-module.exports = {
+const nuxtConfig: NuxtConfiguration = {
   mode: 'spa',
 
   rootDir: './src',
@@ -78,3 +79,6 @@ module.exports = {
     dir: '../dist'
   }
 }
+
+
+export default nuxtConfig

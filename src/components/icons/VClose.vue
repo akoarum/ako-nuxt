@@ -8,11 +8,12 @@
   </svg>
 </template>
 
-<script>
-export default {
-  props: {
-    title: { type: String }
-  }
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+@Component
+export default class VClose extends Vue {
+  @Prop() public title?: string
 }
 </script>
 
