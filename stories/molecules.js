@@ -10,6 +10,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VBox from '~/components/molecules/VBox'
 import VTooltip from '~/components/molecules/VTooltip'
 import VModal from '~/components/molecules/VModal'
 import FormCheckboxes from '~/components/molecules/FormCheckboxes'
@@ -195,5 +196,19 @@ storiesOf('Molecules', module)
           <VTexts small style="white-space: nowrap">{{ content }}</VTexts>
         </VTooltip>
       </div>
+    `
+  }), { info: {} })
+  .add('VBox', () => ({
+    components: { VBox, VTexts },
+    props: {
+      title: { default: text('タイトル', '吾輩は猫である') },
+      level: { default: number('見出しレベル', 2) },
+      content: { default: text('コンテンツ', '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャー') }
+    },
+    template: `
+      <VBox :level="level">
+        <template v-slot:title>{{ title }}</template>
+        <VTexts>{{ content }}</VTexts>
+      </VBox>
     `
   }), { info: {} })
