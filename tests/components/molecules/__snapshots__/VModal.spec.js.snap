@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalContainer initialized snapshot 1`] = `
+exports[`VModal initialized snapshot 1`] = `
 <div
   name="modal"
   style="display: none;"

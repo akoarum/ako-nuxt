@@ -13,7 +13,7 @@
     "generate:prod": "cross-env NODE_ENV=\"prod\" nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "test": "vue-cli-service test:unit --config ./jest.config.js --coverage",
+    "test": "vue-cli-service test:unit --config ./jest.config.js",
     "storybook": "start-storybook -p 9000 -c .storybook",
     "hygen": "hygen component new"
   },
