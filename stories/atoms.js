@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VList from '~/components/atoms/VList'
 import TextIcon from '~/components/atoms/TextIcon'
 import VLabel from '~/components/atoms/VLabel'
 import VBalloon from '~/components/atoms/VBalloon'
@@ -214,3 +215,29 @@ storiesOf('Atoms', module)
       <TextIcon :primary="primary" :secondary="secondary" :caution="caution">{{ label }}</TextIcon>
     `
   }), { info: {} })
+  .add('VList', () => {
+    const tags = select('要素', {
+      ul: 'ul',
+      ol: 'ol'
+    }, 'ul')
+
+    return {
+      components: { VList },
+      props: {
+        tag: { default: tags },
+        ordered: { default: boolean('ナンバリングスタイル', false) }
+      },
+      template: `
+        <VList :items="items" :tag="tag" :ordered="ordered" />
+      `,
+      data() {
+        return {
+          items: [
+            { id: 1, display: '吾輩は猫である' },
+            { id: 2, display: '坊ちゃん' },
+            { id: 3, display: '人間失格' }
+          ]
+        }
+      }
+    }
+  }, { info: {} })

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VList initialized snapshot 1`] = `
+<ul
+  class="vList "
+>
+  <li
+    class="vList__item"
+  >
+    テスト
+  </li>
+  <li
+    class="vList__item"
+  >
+    テスト2
+  </li>
+</ul>
+`;
