@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VLabel from '~/components/atoms/VLabel'
 import VBalloon from '~/components/atoms/VBalloon'
 import VMask from '~/components/atoms/VMask'
 import VContainer from '~/components/atoms/VContainer'
@@ -186,5 +187,17 @@ storiesOf('Atoms', module)
       <VBalloon>
         <VTexts small>吾輩は猫である。名前はまだ無い。</VTexts>
       </VBalloon>
+    `
+  }), { info: {} })
+  .add('VLabel', () => ({
+    components: { VLabel },
+    props: {
+      label: { default: text('ラベル', '名前') },
+      htmlFor: { default: text('for', 'test') },
+      id: { default: text('ID', 'label') },
+      span: { default: boolean('span要素で描画', false) }
+    },
+    template: `
+      <VLabel :for="htmlFor" :id="id" :span="span">{{ label }}</VLabel>
     `
   }), { info: {} })
