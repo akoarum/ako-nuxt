@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import SelectButton from '~/components/atoms/SelectButton'
 import VList from '~/components/atoms/VList'
 import TextIcon from '~/components/atoms/TextIcon'
 import VLabel from '~/components/atoms/VLabel'
@@ -247,3 +248,14 @@ storiesOf('Atoms', module)
       }
     }
   }, { info: {} })
+  .add('SelectButton', () => ({
+    components: { SelectButton },
+    template: `
+      <SelectButton v-model="value" name="name" value="value">項目</SelectButton>
+    `,
+    data() {
+      return {
+        value: []
+      }
+    }
+  }), { info: {} })

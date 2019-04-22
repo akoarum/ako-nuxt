@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectButton initialized snapshot 1`] = `
+<label
+  class="selectButton"
+>
+  <input
+    class="selectButton__input"
+    type="checkbox"
+    value="test"
+  />
+   
+  <span
+    class="selectButton__text"
+  />
+</label>
+`;
