@@ -1,12 +1,12 @@
 <script>
 export default {
   props: {
-    span: { type: Boolean },
+    tag: { type: String, default: 'label' },
     for: { type: String },
     id: { type: String }
   },
   render(h) {
-    const Tag = this.span ? 'span' : 'label'
+    const Tag = this.tag
     return (
       <Tag class="vLabel" for={this.for} id={this.id}>
         {this.$slots.default}

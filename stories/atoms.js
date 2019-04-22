@@ -191,18 +191,24 @@ storiesOf('Atoms', module)
       </VBalloon>
     `
   }), { info: {} })
-  .add('VLabel', () => ({
-    components: { VLabel },
-    props: {
-      label: { default: text('ラベル', '名前') },
-      htmlFor: { default: text('for', 'test') },
-      id: { default: text('ID', 'label') },
-      span: { default: boolean('span要素で描画', false) }
-    },
-    template: `
-      <VLabel :for="htmlFor" :id="id" :span="span">{{ label }}</VLabel>
-    `
-  }), { info: {} })
+  .add('VLabel', () => {
+    const tag = select('要素', {
+      label: 'label',
+      span: 'span'
+    }, 'label')
+    return {
+      components: { VLabel },
+      props: {
+        label: { default: text('ラベル', '名前') },
+        tag: { default: tag },
+        htmlFor: { default: text('for', 'test') },
+        id: { default: text('ID', 'label') }
+      },
+      template: `
+        <VLabel :tag="tag" :for="htmlFor" :id="id">{{ label }}</VLabel>
+      `
+    }
+  }, { info: {} })
   .add('TextIcon', () => ({
     components: { TextIcon },
     props: {
