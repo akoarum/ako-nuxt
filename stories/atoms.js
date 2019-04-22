@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import TextIcon from '~/components/atoms/TextIcon'
 import VLabel from '~/components/atoms/VLabel'
 import VBalloon from '~/components/atoms/VBalloon'
 import VMask from '~/components/atoms/VMask'
@@ -199,5 +200,17 @@ storiesOf('Atoms', module)
     },
     template: `
       <VLabel :for="htmlFor" :id="id" :span="span">{{ label }}</VLabel>
+    `
+  }), { info: {} })
+  .add('TextIcon', () => ({
+    components: { TextIcon },
+    props: {
+      label: { default: text('ラベル', 'ラベル') },
+      primary: { default: boolean('プライマリカラー', false) },
+      secondary: { default: boolean('セカンダリカラー', false) },
+      caution: { default: boolean('警告カラー', false) }
+    },
+    template: `
+      <TextIcon :primary="primary" :secondary="secondary" :caution="caution">{{ label }}</TextIcon>
     `
   }), { info: {} })
