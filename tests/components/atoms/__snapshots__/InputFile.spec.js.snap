@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputFile initialized snapshot 1`] = `
+<label
+  class="inputFile"
+>
+  <input
+    class="inputFile__input"
+    name="test"
+    type="file"
+  />
+   
+  <span
+    class="inputFile__btn"
+  >
+    アップロードする
+  </span>
+   
+  <span
+    class="inputFile__name"
+  >
+    
+  </span>
+</label>
+`;

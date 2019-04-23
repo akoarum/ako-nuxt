@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import InputFile from '~/components/atoms/InputFile'
 import SelectButton from '~/components/atoms/SelectButton'
 import VList from '~/components/atoms/VList'
 import TextIcon from '~/components/atoms/TextIcon'
@@ -256,6 +257,22 @@ storiesOf('Atoms', module)
     data() {
       return {
         value: []
+      }
+    }
+  }), { info: {} })
+  .add('InputFile', () => ({
+    components: { InputFile },
+    template: `
+      <InputFile name="file" :value="value" @input="hanldeInput" />
+    `,
+    data() {
+      return {
+        value: []
+      }
+    },
+    methods: {
+      hanldeInput(file) {
+        this.value = file
       }
     }
   }), { info: {} })
