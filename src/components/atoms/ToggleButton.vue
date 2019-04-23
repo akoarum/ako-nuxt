@@ -1,13 +1,13 @@
 <template>
-  <label class="selectButton">
+  <label class="toggleButton">
     <input
       v-model="model"
       v-bind="$attrs"
       :value="value"
       type="checkbox"
-      class="selectButton__input"
+      class="toggleButton__input"
     />
-    <span class="selectButton__text"><slot /></span>
+    <span class="toggleButton__text"><slot /></span>
   </label>
 </template>
 
@@ -36,12 +36,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.selectButton {
+.toggleButton {
   position: relative;
   display: inline-block;
 }
 
-.selectButton__input {
+.toggleButton__input {
   position: absolute;
   left: 0;
   top: 0;
@@ -49,17 +49,17 @@ export default {
   width: 5px;
   height: 5px;
 
-  &:focus + .selectButton__text {
+  &:focus + .toggleButton__text {
     background: #f0f0f0;
   }
 }
 
-.selectButton__input:checked + .selectButton__text {
+.toggleButton__input:checked + .toggleButton__text {
   background: $color-theme;
   color: #fff;
 }
 
-.selectButton__text {
+.toggleButton__text {
   display: inline-block;
   border-radius: 2px;
   border: 1px solid $color-theme;

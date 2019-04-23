@@ -12,7 +12,7 @@ import {
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
 import InputFile from '~/components/atoms/InputFile'
-import SelectButton from '~/components/atoms/SelectButton'
+import ToggleButton from '~/components/atoms/ToggleButton'
 import VList from '~/components/atoms/VList'
 import TextIcon from '~/components/atoms/TextIcon'
 import VLabel from '~/components/atoms/VLabel'
@@ -249,10 +249,10 @@ storiesOf('Atoms', module)
       }
     }
   }, { info: {} })
-  .add('SelectButton', () => ({
-    components: { SelectButton },
+  .add('ToggleButton', () => ({
+    components: { ToggleButton },
     template: `
-      <SelectButton v-model="value" name="name" value="value">項目</SelectButton>
+      <ToggleButton v-model="value" name="name" value="value">項目</ToggleButton>
     `,
     data() {
       return {

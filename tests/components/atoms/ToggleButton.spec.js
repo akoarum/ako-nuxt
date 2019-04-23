@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import SelectButton from '~/components/atoms/SelectButton'
+import ToggleButton from '~/components/atoms/ToggleButton'
 
-describe('SelectButton', () => {
+describe('ToggleButton', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(SelectButton, {
+    wrapper = shallowMount(ToggleButton, {
       propsData: {
         checkedValue: [],
         value: 'test'
