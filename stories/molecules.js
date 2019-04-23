@@ -10,6 +10,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import FormInputFile from '~/components/molecules/FormInputFile'
 import VBox from '~/components/molecules/VBox'
 import VTooltip from '~/components/molecules/VTooltip'
 import VModal from '~/components/molecules/VModal'
@@ -211,4 +212,20 @@ storiesOf('Molecules', module)
         <VTexts>{{ content }}</VTexts>
       </VBox>
     `
+  }), { info: {} })
+  .add('FormInputFile', () => ({
+    components: { FormInputFile },
+    template: `
+      <FormInputFile :value="value" name="name" required @input="handleInput" />
+    `,
+    data() {
+      return {
+        value: null
+      }
+    },
+    methods: {
+      handleInput(value) {
+        this.value = value
+      }
+    }
   }), { info: {} })

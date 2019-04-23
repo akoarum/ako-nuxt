@@ -30,7 +30,7 @@ export default {
       const file = event.target.files[0]
 
       if (!file) {
-        this.$emit('input', {})
+        this.$emit('input', null)
         this.fileName = ''
         return
       }

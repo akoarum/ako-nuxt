@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInputFile initialized snapshot 1`] = `
+<div
+  class="formInputFile"
+>
+  <inputfile-stub
+    label="アップロードする"
+    name="test"
+  />
+   
+  <!---->
+</div>
+`;
