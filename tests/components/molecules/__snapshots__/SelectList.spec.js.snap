@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectList initialized snapshot 1`] = `
+<ul
+  class="selectList"
+>
+  <li
+    class="selectList__item"
+  >
+    <label
+      class="toggleButton"
+    >
+      <input
+        class="toggleButton__input"
+        name="test"
+        type="checkbox"
+        value="1"
+      />
+       
+      <span
+        class="toggleButton__text"
+      >
+        
+      項目1
+    
+      </span>
+    </label>
+  </li>
+  <li
+    class="selectList__item"
+  >
+    <label
+      class="toggleButton"
+    >
+      <input
+        class="toggleButton__input"
+        name="test"
+        type="checkbox"
+        value="2"
+      />
+       
+      <span
+        class="toggleButton__text"
+      >
+        
+      項目2
+    
+      </span>
+    </label>
+  </li>
+</ul>
+`;

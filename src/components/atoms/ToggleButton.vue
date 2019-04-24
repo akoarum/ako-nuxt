@@ -38,7 +38,7 @@ export default {
 <style lang="scss" scoped>
 .toggleButton {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .toggleButton__input {
@@ -61,6 +61,7 @@ export default {
 
 .toggleButton__text {
   display: inline-block;
+  box-sizing: border-box;
   border-radius: 2px;
   border: 1px solid $color-theme;
   line-height: 1;
@@ -70,12 +71,19 @@ export default {
 
   @include media-min {
     padding: 9px 14px;
-    min-width: 140px;
+    max-width: 260px;
+    width: 100%;
     font-size: $fontSize-pc;
 
     &:hover {
       background: #f0f0f0;
     }
+  }
+
+  @include media-max {
+    padding: 8px 12px;
+    width: 100%;
+    font-size: $fontSize-sp;
   }
 }
 </style>

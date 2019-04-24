@@ -10,6 +10,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import SelectList from '~/components/molecules/SelectList'
 import FormInputFile from '~/components/molecules/FormInputFile'
 import VBox from '~/components/molecules/VBox'
 import VTooltip from '~/components/molecules/VTooltip'
@@ -226,6 +227,25 @@ storiesOf('Molecules', module)
     methods: {
       handleInput(value) {
         this.value = value
+      }
+    }
+  }), { info: {} })
+  .add('SelectList', () => ({
+    components: { SelectList },
+    template: `
+      <SelectList v-model="value" :selects="selects" name="name" />
+    `,
+    data() {
+      return {
+        selects: [
+          { id: 1, value: '1', label: '項目1' },
+          { id: 2, value: '2', label: '項目2' },
+          { id: 3, value: '3', label: '項目3' },
+          { id: 4, value: '4', label: '項目4' },
+          { id: 5, value: '5', label: '項目5' },
+          { id: 6, value: '6', label: '項目6' }
+        ],
+        value: []
       }
     }
   }), { info: {} })
