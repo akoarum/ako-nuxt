@@ -5,6 +5,8 @@ exports[`FormInputFile initialized snapshot 1`] = `
   class="formInputFile"
 >
   <inputfile-stub
+    aria-invalid="false"
+    class="formInputFile__input"
     label="アップロードする"
     name="test"
   />
