@@ -1,6 +1,7 @@
 <template>
   <label class="inputFile">
     <input
+      v-bind="$attrs"
       :name="name"
       :required="required"
       type="file"

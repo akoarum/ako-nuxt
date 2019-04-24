@@ -1,7 +1,23 @@
 <template>
   <div class="formInputFile">
-    <InputFile :name="name" @input="handleInput" />
-    <VTexts v-if="error" small caution>{{ error }}</VTexts>
+    <InputFile
+      :name="name"
+      :aria-invalid="String(!!error)"
+      :aria-describedby="error ? `${name}-error` : false"
+      class="formInputFile__input"
+      @input="handleInput"
+    />
+    <VTexts
+      v-if="error"
+      :id="`${name}-error`"
+      role="alert"
+      aria-live="assertive"
+      class="formInputFile__error"
+      small
+      caution
+    >
+      <span>{{ error }}</span>
+    </VTexts>
   </div>
 </template>
 
@@ -41,6 +57,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.formInputFile {
+.formInputFile__error {
+  @include media-min {
+    margin-top: 8px;
+  }
+
+  @include media-max {
+    margin-top: 4px;
+  }
 }
 </style>
