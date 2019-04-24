@@ -11,7 +11,7 @@
     "generate:dev": "cross-env NODE_ENV=\"dev\" nuxt generate",
     "generate:staging": "cross-env NODE_ENV=\"staging\" nuxt generate",
     "generate:prod": "cross-env NODE_ENV=\"prod\" nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
     "precommit": "npm run lint",
     "test": "vue-cli-service test:unit --config ./jest.config.js",
     "storybook": "start-storybook -p 9000 -c .storybook",
@@ -19,7 +19,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test"
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn test"
     }
   },
   "dependencies": {
