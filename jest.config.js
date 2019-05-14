@@ -23,4 +23,3 @@ module.exports = {
     '.eslintrc.js',
     '/_hygen'
   ]
-}
