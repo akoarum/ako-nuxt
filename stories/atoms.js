@@ -12,7 +12,6 @@ import {
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
 
-
 storiesOf('Atoms', module)
   .addDecorator(withInfo)
   .addDecorator(withKnobs)
