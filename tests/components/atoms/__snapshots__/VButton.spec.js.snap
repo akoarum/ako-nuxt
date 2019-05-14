@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`VButton initialized snapshot 1`] = `
-<button
-  class="btn"
-  type="button"
-/>
-`;
