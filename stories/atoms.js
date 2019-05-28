@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VTextarea from '~/components/atoms/VTextarea'
 import VInput from '~/components/atoms/VInput'
 import VTexts from '~/components/atoms/VTexts'
 import VButton from '~/components/atoms/VButton'
@@ -61,12 +62,39 @@ storiesOf('Atoms', module)
         type: { default: type }
       },
       template: `
-        <VInput :type="type" v-model="value" />
+        <VInput
+          :type="type"
+          v-model="value"
+          @focus="focus"
+          @input="input"
+          @blur="blur"
+        />
       `,
       data() {
         return {
           value: ''
         }
+      },
+      methods: {
+        focus: action('focus'),
+        input: action('input'),
+        blur: action('blur')
       }
     }
   }, { info: {} })
+  .add('VTextarea', () => ({
+    components: { VTextarea },
+    template: `
+      <VTextarea v-model="value" @focus="focus" @input="input" @blur="blur" />
+    `,
+    data() {
+      return {
+        value: ''
+      }
+    },
+    methods: {
+      focus: action('focus'),
+      input: action('input'),
+      blur: action('blur')
+    }
+  }), { info: {} })
