@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VRadio from '~/components/atoms/VRadio'
 import VTextarea from '~/components/atoms/VTextarea'
 import VInput from '~/components/atoms/VInput'
 import VTexts from '~/components/atoms/VTexts'
@@ -96,5 +97,22 @@ storiesOf('Atoms', module)
       focus: action('focus'),
       input: action('input'),
       blur: action('blur')
+    }
+  }), { info: {} })
+  .add('VRadio', () => ({
+    components: { VRadio },
+    props: {
+      label: { default: text('ラベル', 'ラジオ項目') }
+    },
+    template: `
+      <VRadio v-model="value" value="value" @change="change">{{ label }}</VRadio>
+    `,
+    data() {
+      return {
+        value: ''
+      }
+    },
+    methods: {
+      change: action('change')
     }
   }), { info: {} })
