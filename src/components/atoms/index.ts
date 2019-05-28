@@ -1,1 +1,2 @@
-export { default as VButton } from './VButton/index'
+export { default as VButton } from './VButton.vue'
+export { default as VTexts } from './VTexts.vue'

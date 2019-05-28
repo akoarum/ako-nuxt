@@ -11,7 +11,8 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
-import VButton from '~/components/atoms/VButton/index'
+import VTexts from '~/components/atoms/VTexts'
+import VButton from '~/components/atoms/VButton'
 
 storiesOf('Atoms', module)
   .addDecorator(withInfo)
@@ -31,4 +32,17 @@ storiesOf('Atoms', module)
     methods: {
       click: action('click')
     }
+  }), { info: {} })
+  .add('VTexts', () => ({
+    components: { VTexts },
+    props: {
+      texts: {
+        default: text('テキスト', '吾輩は猫である。名前はまだ無い。\nどこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャー')
+      },
+      caution: { default: boolean('スタイル - caution', false) },
+      small: { default: boolean('スタイル - small', false) }
+    },
+    template: `
+      <VTexts :caution="caution" :small="small">{{ texts }}</VTexts>
+    `
   }), { info: {} })
