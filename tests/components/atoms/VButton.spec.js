@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import VButton from '~/components/atoms/VButton/index'
+import VButton from '~/components/atoms/VButton'
 
 describe('VButton', () => {
   let wrapper

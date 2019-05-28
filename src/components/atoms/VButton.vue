@@ -11,32 +11,34 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
 
-@Component
-export default class VButton extends Vue {
-  @Prop() private secondary?: boolean
-  @Prop() private caution?: boolean
-  @Prop() private small?: boolean
+export default Vue.extend({
+  props: {
+    secondary: { type: Boolean },
+    caution: { type: Boolean },
+    small: { type: Boolean }
+  },
+  computed: {
+    styledClasses(): string[] {
+      const classes: string[] = []
 
-  public get styledClasses(): string[] {
-    const classes: string[] = []
+      if (this.secondary) {
+        classes.push('-secondary')
+      }
 
-    if (this.secondary) {
-      classes.push('-secondary')
+      if (this.caution) {
+        classes.push('-caution')
+      }
+
+      if (this.small) {
+        classes.push('-small')
+      }
+
+      return classes
     }
-
-    if (this.caution) {
-      classes.push('-caution')
-    }
-
-    if (this.small) {
-      classes.push('-small')
-    }
-
-    return classes
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
