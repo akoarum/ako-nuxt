@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VInput from '~/components/atoms/VInput'
 import VTexts from '~/components/atoms/VTexts'
 import VButton from '~/components/atoms/VButton'
 
@@ -46,3 +47,26 @@ storiesOf('Atoms', module)
       <VTexts :caution="caution" :small="small">{{ texts }}</VTexts>
     `
   }), { info: {} })
+  .add('VInput', () => {
+    const type = select('type', {
+      text: 'text',
+      number: 'number',
+      email: 'email',
+      tel: 'tel',
+      password: 'password'
+    }, 'text')
+    return {
+      components: { VInput },
+      props: {
+        type: { default: type }
+      },
+      template: `
+        <VInput :type="type" v-model="value" />
+      `,
+      data() {
+        return {
+          value: ''
+        }
+      }
+    }
+  }, { info: {} })
