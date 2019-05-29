@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VCheckbox from '~/components/atoms/VCheckbox'
 import VRadio from '~/components/atoms/VRadio'
 import VTextarea from '~/components/atoms/VTextarea'
 import VInput from '~/components/atoms/VInput'
@@ -110,6 +111,30 @@ storiesOf('Atoms', module)
     data() {
       return {
         value: ''
+      }
+    },
+    methods: {
+      change: action('change')
+    }
+  }), { info: {} })
+  .add('VCheckbox', () => ({
+    components: { VCheckbox },
+    template: `
+      <VCheckbox v-model="model" :value="1" @change="change">項目1</VCheckbox>
+    `,
+    data() {
+      return {
+        value: false
+      }
+    },
+    computed: {
+      model: {
+        set() {
+          this.value = !this.value
+        },
+        get() {
+          return this.value
+        }
       }
     },
     methods: {

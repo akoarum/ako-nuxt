@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VCheckbox initialized snapshot 1`] = `
+<label
+  class="vCheckbox"
+>
+  <input
+    class="vCheckbox__input"
+    type="checkbox"
+    value="test"
+  />
+   
+  <span
+    class="vCheckbox__label"
+  />
+</label>
+`;
