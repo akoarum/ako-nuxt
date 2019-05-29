@@ -7,7 +7,7 @@ exports[`VRadio initialized snapshot 1`] = `
   <input
     class="vRadio__input"
     type="radio"
-    value=""
+    value="test"
   />
    
   <span

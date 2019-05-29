@@ -6,7 +6,9 @@ describe('VInput', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(VInput, {
-      propsData: {}
+      propsData: {
+        value: 'test'
+      }
     })
   })
 

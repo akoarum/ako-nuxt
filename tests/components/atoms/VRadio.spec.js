@@ -6,7 +6,9 @@ describe('VRadio', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(VRadio, {
-      propsData: {}
+      propsData: {
+        value: 'test'
+      }
     })
   })
 

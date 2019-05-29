@@ -6,7 +6,9 @@ describe('VTextarea', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(VTextarea, {
-      propsData: {}
+      propsData: {
+        value: 'test'
+      }
     })
   })
 
