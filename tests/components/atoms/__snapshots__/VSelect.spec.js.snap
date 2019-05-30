@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VSelect initialized snapshot 1`] = `
+<div
+  class="vSelect"
+>
+  <select
+    class="vSelect__content"
+  >
+    <option
+      value="1"
+    >
+      
+        テスト
+      
+    </option>
+    <option
+      value="2"
+    >
+      
+        テスト2
+      
+    </option>
+  </select>
+</div>
+`;

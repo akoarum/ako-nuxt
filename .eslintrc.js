@@ -20,6 +20,7 @@ module.exports = {
   ],
   rules: {
     'no-console': 'off',
+    'no-unused-vars': 'off',
     'vue/max-attributes-per-line': 'off',
     'vue/require-default-prop': 'off',
     'vue/singleline-html-element-content-newline': 'off',

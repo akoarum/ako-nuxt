@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VSelect from '~/components/atoms/VSelect'
 import VCheckbox from '~/components/atoms/VCheckbox'
 import VRadio from '~/components/atoms/VRadio'
 import VTextarea from '~/components/atoms/VTextarea'
@@ -135,6 +136,25 @@ storiesOf('Atoms', module)
         get() {
           return this.value
         }
+      }
+    },
+    methods: {
+      change: action('change')
+    }
+  }), { info: {} })
+  .add('VSelect', () => ({
+    components: { VSelect },
+    template: `
+      <VSelect v-model="value" :options="options" @change="change" />
+    `,
+    data() {
+      return {
+        options: [
+          { id: 1, label: '項目1' },
+          { id: 2, label: '項目2' },
+          { id: 3, label: '項目3' }
+        ],
+        value: null
       }
     },
     methods: {
