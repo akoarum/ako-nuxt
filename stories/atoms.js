@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VLabel from '~/components/atoms/VLabel'
 import VSelect from '~/components/atoms/VSelect'
 import VCheckbox from '~/components/atoms/VCheckbox'
 import VRadio from '~/components/atoms/VRadio'
@@ -160,4 +161,14 @@ storiesOf('Atoms', module)
     methods: {
       change: action('change')
     }
+  }), { info: {} })
+  .add('VLabel', () => ({
+    components: { VLabel },
+    props: {
+      label: { default: text('ラベル', 'テキスト') },
+      htmlFor: { default: text('for', 'name') }
+    },
+    template: `
+      <VLabel :html-for="htmlFor">{{ label }}</VLabel>
+    `
   }), { info: {} })
