@@ -55,6 +55,10 @@ module.exports = async ({ config }) => {
     }
   })
   config.module.rules.push({
+    test: /\.tsx$/,
+    loader: 'ts-loader'
+  })
+  config.module.rules.push({
     test: /\.vue$/,
     loader: 'storybook-addon-vue-info/loader',
     enforce: 'post'
