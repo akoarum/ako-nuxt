@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "jsxFactory": "h",
+    "types": [
+      "@types/node",
+      "@nuxt/vue-app"
+    ]
+  }
+}

@@ -1,13 +1,19 @@
 module.exports = {
+  globals: {
+    'ts-jest': {
+      tsConfig: 'tsconfig-test.json'
+    }
+  },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/src/$1',
     '^vue$': 'vue/dist/vue.common.js'
   },
-  moduleFileExtensions: ['js', 'vue', 'json'],
+  moduleFileExtensions: ['js', 'vue', 'json', 'tsx'],
   transform: {
     '^.+\\.js$': 'babel-jest',
-    '.*\\.(vue)$': 'vue-jest'
+    '.*\\.(vue)$': 'vue-jest',
+    '^.+\\.tsx$': 'ts-jest'
   },
   collectCoverageFrom: [
     'src/*.{js,vue}'
