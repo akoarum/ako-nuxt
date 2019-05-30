@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VOlist from '~/components/atoms/VOlist'
 import VUlist from '~/components/atoms/VUlist'
 import VHeading from '~/components/atoms/VHeading.tsx'
 import VLabel from '~/components/atoms/VLabel'
@@ -192,6 +193,24 @@ storiesOf('Atoms', module)
     },
     template: `
       <VUlist :items="items" :ordered="ordered" />
+    `,
+    data() {
+      return {
+        items: [
+          { id: 1, label: '夏目漱石' },
+          { id: 2, label: '川端康成' },
+          { id: 3, label: '芥川龍之介' }
+        ]
+      }
+    }
+  }), { info: {} })
+  .add('VOlist', () => ({
+    components: { VOlist },
+    props: {
+      ordered: { default: boolean('番号付き', true) }
+    },
+    template: `
+      <VOlist :items="items" :ordered="ordered" />
     `,
     data() {
       return {

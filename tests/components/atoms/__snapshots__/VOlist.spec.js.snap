@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VOlist initialized snapshot 1`] = `
+<ol
+  class="list -ordered"
+>
+  <li
+    class="list__item"
+  >
+    テスト
+  </li>
+  <li
+    class="list__item"
+  >
+    テスト2
+  </li>
+</ol>
+`;
