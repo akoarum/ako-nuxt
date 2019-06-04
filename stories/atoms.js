@@ -15,7 +15,6 @@ import VMask from '~/components/atoms/VMask'
 import VLink from '~/components/atoms/VLink'
 import VOlist from '~/components/atoms/VOlist'
 import VUlist from '~/components/atoms/VUlist'
-import VHeading from '~/components/atoms/VHeading.tsx'
 import VLabel from '~/components/atoms/VLabel'
 import VSelect from '~/components/atoms/VSelect'
 import VCheckbox from '~/components/atoms/VCheckbox'
@@ -175,17 +174,6 @@ storiesOf('Atoms', module)
     },
     template: `
       <VLabel :html-for="htmlFor">{{ label }}</VLabel>
-    `
-  }), { info: {} })
-  .add('VHeading', () => ({
-    components: { VHeading },
-    props: {
-      level: { default: number('レベル', 2, { min: 2, max: 4 }) },
-      visual: { default: number('見た目のレベル', 2, { min: 2, max: 4 }) },
-      texts: { default: text('テキスト', '吾輩は猫である') }
-    },
-    template: `
-      <VHeading :level="level" :visual="visual">{{ texts }}</VHeading>
     `
   }), { info: {} })
   .add('VUlist', () => ({
