@@ -8,3 +8,8 @@ export type ListItem = {
   id: string | number
   label: string
 }
+
+export type ValidatePattern = {
+  regex?: RegExp
+  message: string
+}
