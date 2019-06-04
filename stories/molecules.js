@@ -10,6 +10,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import FormSelect from '~/components/molecules/FormSelect'
 import FormRadios from '~/components/molecules/FormRadios'
 import FormTextarea from '~/components/molecules/FormTextarea'
 import FormInput from '~/components/molecules/FormInput'
@@ -102,6 +103,35 @@ storiesOf('Molecules', module)
       return {
         value: '',
         items: [
+          { id: 1, label: '項目1' },
+          { id: 2, label: '項目2' },
+          { id: 3, label: '項目3' }
+        ]
+      }
+    },
+    methods: {
+      change: action('change'),
+      dirty: action('dirty'),
+      error: action('error')
+    }
+  }), { info: {} })
+  .add('FormSelect', () => ({
+    components: { FormSelect },
+    template: `
+      <FormSelect
+        v-model="value"
+        :options="options"
+        name="name"
+        required
+        @change="change"
+        @dirty="dirty"
+        @error="error"
+      />
+    `,
+    data() {
+      return {
+        value: '',
+        options: [
           { id: 1, label: '項目1' },
           { id: 2, label: '項目2' },
           { id: 3, label: '項目3' }
