@@ -11,8 +11,22 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VCaret from '~/components/icons/VCaret'
 
 storiesOf('Icons', module)
   .addDecorator(withInfo)
   .addDecorator(withKnobs)
   .addDecorator(StoryRouter({}))
+  .add('VCaret', () => ({
+    components: { VCaret },
+    props: {
+      width: { default: number('width', 8) },
+      height: { default: number('height', 6) },
+      color: { default: color('カラー', '#333') }
+    },
+    template: `
+      <div :style="{ color: color }">
+        <VCaret :width="width" :height="height" />
+      </div>
+    `
+  }), { info: {} })
