@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VMask from '~/components/atoms/VMask'
 import VLink from '~/components/atoms/VLink'
 import VOlist from '~/components/atoms/VOlist'
 import VUlist from '~/components/atoms/VUlist'
@@ -232,4 +233,16 @@ storiesOf('Atoms', module)
     template: `
       <VLink :href="href">{{ label }}</VLink>
     `
+  }), { info: {} })
+  .add('VMask', () => ({
+    components: { VMask },
+    props: {
+      transparent: { default: boolean('透明', false) }
+    },
+    template: `
+      <VMask style="width: 500px; height: 500px;" :transparent="transparent" @click="click" />
+    `,
+    methods: {
+      click: action('click')
+    }
   }), { info: {} })
