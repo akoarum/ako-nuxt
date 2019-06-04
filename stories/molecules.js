@@ -10,6 +10,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import FormTextarea from '~/components/molecules/FormTextarea'
 import FormInput from '~/components/molecules/FormInput'
 
 storiesOf('Molecules', module)
@@ -56,3 +57,30 @@ storiesOf('Molecules', module)
       }
     }
   }, { info: {} })
+  .add('FormTextarea', () => ({
+    components: { FormTextarea },
+    template: `
+      <FormTextarea
+        v-model="value"
+        name="test"
+        required
+        @focus="focus"
+        @input="input"
+        @blur="blur"
+        @dirty="dirty"
+        @error="error"
+      />
+    `,
+    data() {
+      return {
+        value: ''
+      }
+    },
+    methods: {
+      focus: action('focus'),
+      input: action('input'),
+      blur: action('blur'),
+      dirty: action('dirty'),
+      error: action('error')
+    }
+  }), { info: {} })
