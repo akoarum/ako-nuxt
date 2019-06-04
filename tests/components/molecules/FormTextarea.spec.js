@@ -25,11 +25,13 @@ describe('FormTextarea', () => {
   describe('methods', () => {
     it('handleBlur: blurをemitして、isDirtyがfalseならupdateDirtyを呼び出す', () => {
       const mockUpdateDirty = jest.fn()
+      wrapper.setData({ isDirty: false })
       wrapper.setMethods({ updateDirty: mockUpdateDirty })
       wrapper.vm.handleBlur()
       expect(wrapper.emitted().blur).toBeTruthy()
       expect(mockUpdateDirty).toHaveBeenCalled()
     })
+
     it('updateDirty: isDirtyを更新する', () => {
       wrapper.vm.updateDirty()
       expect(wrapper.vm.isDirty).toBe(true)
@@ -38,6 +40,7 @@ describe('FormTextarea', () => {
     describe('validate: バリデーション', () => {
       it('isDirtyでない場合は空文字列を返す', () => {
         wrapper.setProps({ required: true })
+        wrapper.setData({ isDirty: false })
         expect(wrapper.vm.validate('')).toBe('')
       })
 

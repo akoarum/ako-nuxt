@@ -27,6 +27,7 @@ describe('FormInput', () => {
       const mockUpdateDirty = jest.fn()
       wrapper.setProps({ required: true, value: 'test' })
       wrapper.setMethods({ updateDirty: mockUpdateDirty })
+      wrapper.setData({ isDirty: false })
       wrapper.vm.handleBlur()
       expect(wrapper.emitted().blur).toBeTruthy()
       expect(mockUpdateDirty).toHaveBeenCalled()
