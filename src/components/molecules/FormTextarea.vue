@@ -74,7 +74,7 @@ export default Vue.extend({
     }
   },
   created() {
-    if (this.value) {
+    if (this.value || !this.required) {
       this.updateDirty()
     }
   },
