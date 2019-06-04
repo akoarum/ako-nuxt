@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormRadios initialized snapshot 1`] = `
+<div
+  class="formRadios"
+>
+  <ul
+    class="formRadios__items"
+  >
+    <li
+      class="formRadios__item"
+    >
+      <vradio-stub
+        aria-describedby="test-error"
+        aria-invalid="false"
+        name="test"
+        value=""
+      >
+        <span>
+          項目1
+        </span>
+      </vradio-stub>
+    </li>
+    <li
+      class="formRadios__item"
+    >
+      <vradio-stub
+        aria-describedby="test-error"
+        aria-invalid="false"
+        name="test"
+        value=""
+      >
+        <span>
+          項目2
+        </span>
+      </vradio-stub>
+    </li>
+    <li
+      class="formRadios__item"
+    >
+      <vradio-stub
+        aria-describedby="test-error"
+        aria-invalid="false"
+        name="test"
+        value=""
+      >
+        <span>
+          項目3
+        </span>
+      </vradio-stub>
+    </li>
+  </ul>
+   
+  <!---->
+</div>
+`;

@@ -23,8 +23,8 @@ export default Vue.extend({
     prop: 'checkedValue'
   },
   props: {
-    value: { type: String, required: true },
-    checkedValue: { type: String }
+    value: { type: [String, Number], required: true },
+    checkedValue: { type: [String, Number] }
   },
   computed: {
     model: {
@@ -83,6 +83,7 @@ export default Vue.extend({
 .vRadio__label::before {
   left: 0;
   border: 1px solid $color-border;
+  background: #fff;
   transition: border-color 0.1s $easing;
 
   @include media-min {

@@ -100,6 +100,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.formTextarea {
+.formTextarea__error {
+  @include media-min {
+    margin-top: 6px;
+  }
+  @include media-max {
+    margin-top: 8px;
+  }
 }
 </style>
