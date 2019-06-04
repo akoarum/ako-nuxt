@@ -10,6 +10,9 @@
     "types": [
       "@types/node",
       "@nuxt/vue-app"
-    ]
+    ],
+    "paths": {
+      "~/*": ["src/*"]
+    }
   }
 }
