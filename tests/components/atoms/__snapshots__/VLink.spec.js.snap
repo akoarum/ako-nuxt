@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VLink initialized snapshot 1`] = `
+<a
+  class="vLink"
+>
+  <vcaret-stub
+    class="vLink__arrow"
+  />
+   テスト
+</a>
+`;

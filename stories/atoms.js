@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VLink from '~/components/atoms/VLink'
 import VOlist from '~/components/atoms/VOlist'
 import VUlist from '~/components/atoms/VUlist'
 import VHeading from '~/components/atoms/VHeading.tsx'
@@ -221,4 +222,14 @@ storiesOf('Atoms', module)
         ]
       }
     }
+  }), { info: {} })
+  .add('VLink', () => ({
+    components: { VLink },
+    props: {
+      href: { default: text('href', 'https://google.co.jp') },
+      label: { default: text('ラベル', 'リンク') }
+    },
+    template: `
+      <VLink :href="href">{{ label }}</VLink>
+    `
   }), { info: {} })
