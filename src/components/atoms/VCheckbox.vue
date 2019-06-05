@@ -6,7 +6,7 @@
       :checked="checked"
       type="checkbox"
       class="vCheckbox__input"
-      @change="$emit('change', value)"
+      @change="$emit('change', !checked)"
     />
     <span class="vCheckbox__label"><slot /></span>
   </label>

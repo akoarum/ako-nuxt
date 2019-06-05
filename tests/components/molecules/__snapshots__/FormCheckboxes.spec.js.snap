@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormCheckboxes initialized snapshot 1`] = `
+<div
+  class="formCheckboxes"
+>
+  <ul
+    class="formCheckboxes__list"
+  >
+    <li
+      class="formCheckboxes__item"
+    >
+      <vcheckbox-stub
+        aria-invalid="false"
+        name="test"
+        value="1"
+      >
+        <span>
+          項目1
+        </span>
+      </vcheckbox-stub>
+    </li>
+    <li
+      class="formCheckboxes__item"
+    >
+      <vcheckbox-stub
+        aria-invalid="false"
+        name="test"
+        value="2"
+      >
+        <span>
+          項目2
+        </span>
+      </vcheckbox-stub>
+    </li>
+    <li
+      class="formCheckboxes__item"
+    >
+      <vcheckbox-stub
+        aria-invalid="false"
+        name="test"
+        value="3"
+      >
+        <span>
+          項目3
+        </span>
+      </vcheckbox-stub>
+    </li>
+  </ul>
+   
+  <!---->
+</div>
+`;

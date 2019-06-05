@@ -10,6 +10,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import FormCheckboxes from '~/components/molecules/FormCheckboxes'
 import FormSelect from '~/components/molecules/FormSelect'
 import FormRadios from '~/components/molecules/FormRadios'
 import FormTextarea from '~/components/molecules/FormTextarea'
@@ -132,6 +133,40 @@ storiesOf('Molecules', module)
       return {
         value: '',
         options: [
+          { id: 1, label: '項目1' },
+          { id: 2, label: '項目2' },
+          { id: 3, label: '項目3' }
+        ]
+      }
+    },
+    methods: {
+      change: action('change'),
+      dirty: action('dirty'),
+      error: action('error')
+    }
+  }), { info: {} })
+  .add('FormCheckboxes', () => ({
+    components: { FormCheckboxes },
+    props: {
+      min: { default: number('min', 0) },
+      max: { default: number('max', 0) }
+    },
+    template: `
+      <FormCheckboxes
+        v-model="value"
+        :items="items"
+        :min="min"
+        :max="max"
+        name="name"
+        required
+        @dirty="dirty"
+        @change="change"
+      />
+    `,
+    data() {
+      return {
+        value: [],
+        items: [
           { id: 1, label: '項目1' },
           { id: 2, label: '項目2' },
           { id: 3, label: '項目3' }
