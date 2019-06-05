@@ -6,7 +6,7 @@
       :name="name"
       :required="required"
       :aria-invalid="String(isError)"
-      :aria-describedby="`${name}-error`"
+      :aria-describedby="isError ? `${name}-error` : false"
       class="formTextarea__textarea"
       @focus="$emit('focus')"
       @blur="handleBlur"

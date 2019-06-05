@@ -11,7 +11,6 @@ exports[`FormRadios initialized snapshot 1`] = `
       class="formRadios__item"
     >
       <vradio-stub
-        aria-describedby="test-error"
         aria-invalid="false"
         name="test"
         value=""
@@ -25,7 +24,6 @@ exports[`FormRadios initialized snapshot 1`] = `
       class="formRadios__item"
     >
       <vradio-stub
-        aria-describedby="test-error"
         aria-invalid="false"
         name="test"
         value=""
@@ -39,7 +37,6 @@ exports[`FormRadios initialized snapshot 1`] = `
       class="formRadios__item"
     >
       <vradio-stub
-        aria-describedby="test-error"
         aria-invalid="false"
         name="test"
         value=""

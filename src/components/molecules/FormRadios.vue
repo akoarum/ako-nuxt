@@ -10,7 +10,7 @@
             :value="item.value || item.id"
             :required="required"
             :aria-invalid="String(isError)"
-            :aria-describedby="`${name}-error`"
+            :aria-describedby="isError ? `${name}-error` : false"
             @change.once="updateDirty"
           >
             <span>{{ item.label }}</span>

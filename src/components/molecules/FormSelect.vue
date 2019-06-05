@@ -5,10 +5,20 @@
       :name="name"
       :options="options"
       :required="required"
+      :aria-invalid="String(isError)"
+      :aria-describedby="isError ? `${name}-error` : false"
+      class="formSelect__select"
       @change.once="updateDirty"
     />
     <template v-if="isError">
-      <VTexts small caution>
+      <VTexts
+        :id="`${name}-error`"
+        role="alert"
+        aria-live="assertive"
+        class="formSelect__error"
+        small
+        caution
+      >
         <span>{{ error }}</span>
       </VTexts>
     </template>
@@ -86,6 +96,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.formSelect {
+.formSelect__error {
+  @include media-min {
+    margin-top: 6px;
+  }
+
+  @include media-max {
+    margin-top: 8px;
+  }
 }
 </style>
