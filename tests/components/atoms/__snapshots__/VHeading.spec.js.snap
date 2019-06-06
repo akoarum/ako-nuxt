@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VHeading initialized snapshot 1`] = `
+<h2
+  class="vHeading -lv2"
+/>
+`;

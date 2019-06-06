@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VHeading from '~/components/atoms/VHeading'
 import VMask from '~/components/atoms/VMask'
 import VLink from '~/components/atoms/VLink'
 import VOlist from '~/components/atoms/VOlist'
@@ -233,4 +234,15 @@ storiesOf('Atoms', module)
     methods: {
       click: action('click')
     }
+  }), { info: {} })
+  .add('VHeading', () => ({
+    components: { VHeading },
+    props: {
+      level: { default: number('レベル', 2, { min: 1, max: 6 }) },
+      visual: { default: number('見た目レベル', 2, { min: 2, max: 4 }) },
+      text: { default: text('テキスト', '吾輩は猫である') }
+    },
+    template: `
+      <VHeading :level="level" :visual="visual">{{ text }}</VHeading>
+    `
   }), { info: {} })
