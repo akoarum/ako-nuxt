@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VContainer from '~/components/atoms/VContainer'
 import VHeading from '~/components/atoms/VHeading'
 import VMask from '~/components/atoms/VMask'
 import VLink from '~/components/atoms/VLink'
@@ -244,5 +245,21 @@ storiesOf('Atoms', module)
     },
     template: `
       <VHeading :level="level" :visual="visual">{{ text }}</VHeading>
+    `
+  }), { info: {} })
+  .add('VContainer', () => ({
+    components: { VContainer, VTexts },
+    props: {
+      texts: {
+        default: text('コンテンツテキスト', '吾輩は猫である。名前はまだ無い。\nどこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャー')
+      },
+      maxWidth: {
+        default: text('maxWidth', '1024px')
+      }
+    },
+    template: `
+      <VContainer :max-width="maxWidth">
+        <VTexts>{{ texts }}</VTexts>
+      </VContainer>
     `
   }), { info: {} })
