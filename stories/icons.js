@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VClose from '~/components/icons/VClose'
 import VCaret from '~/components/icons/VCaret'
 
 storiesOf('Icons', module)
@@ -27,6 +28,17 @@ storiesOf('Icons', module)
     template: `
       <div :style="{ color: color }">
         <VCaret :width="width" :height="height" />
+      </div>
+    `
+  }), { info: {} })
+  .add('VClose', () => ({
+    components: { VClose },
+    props: {
+      color: { default: color('カラー', '#333') }
+    },
+    template: `
+      <div :style="{ color: color }">
+        <VClose />
       </div>
     `
   }), { info: {} })
