@@ -2,8 +2,10 @@ import { configure, addDecorator } from '@storybook/vue'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Decorator from './Decorator.vue'
+import windowSize from '../src/plugins/windowSize/index.ts'
 
 Vue.use(Vuex)
+Vue.use(windowSize)
 
 addDecorator(() => ({
   components: { Decorator },

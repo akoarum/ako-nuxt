@@ -16,7 +16,7 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest'
   },
   collectCoverageFrom: [
-    'src/**/*.{js,vue}'
+    'src/**/*.{js,ts,vue}'
   ],
   coverageReporters: [
     'html',
