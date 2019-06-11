@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VBox initialized snapshot 1`] = `
+<div
+  class="vBox"
+>
+  <vheading-stub
+    class="vBox__title"
+    level="2"
+    visual="3"
+  >
+    
+    テスト
+  
+  </vheading-stub>
+   
+  <div
+    class="vBox__content"
+  />
+</div>
+`;
