@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VModal initialized snapshot 1`] = `
+<div
+  class="vModal"
+  name="modal"
+  style="display: none;"
+>
+  <div
+    class="vModal__inner"
+  >
+    <button
+      class="vModal__close"
+      type="button"
+    >
+      <vclose-stub
+        title="閉じる"
+      />
+    </button>
+     
+    <div
+      class="vModal__content"
+    >
+      <div
+        tabindex="0"
+      />
+       
+      <vcontainer-stub
+        class="vModal__contentInner"
+      />
+       
+      <div
+        tabindex="0"
+      />
+    </div>
+  </div>
+   
+  <vmask-stub
+    class="vModal__mask"
+  />
+</div>
+`;
