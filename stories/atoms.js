@@ -11,6 +11,7 @@ import {
 } from '@storybook/addon-knobs'
 import { withInfo } from 'storybook-addon-vue-info'
 import StoryRouter from 'storybook-router'
+import VBalloon from '~/components/atoms/VBalloon'
 import VContainer from '~/components/atoms/VContainer'
 import VHeading from '~/components/atoms/VHeading'
 import VMask from '~/components/atoms/VMask'
@@ -261,5 +262,13 @@ storiesOf('Atoms', module)
       <VContainer :max-width="maxWidth">
         <VTexts>{{ texts }}</VTexts>
       </VContainer>
+    `
+  }), { info: {} })
+  .add('VBalloon', () => ({
+    components: { VBalloon, VTexts },
+    template: `
+      <VBalloon>
+        <VTexts>吾輩は猫である。名前はまだ無い。</VTexts>
+      </VBalloon>
     `
   }), { info: {} })
