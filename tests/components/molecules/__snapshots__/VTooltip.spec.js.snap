@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VTooltip initialized snapshot 1`] = `
+<div
+  class="vTooltip"
+>
+  <button
+    aria-contols="balloon-test"
+    aria-expanded="false"
+    class="vTooltip__btn"
+    type="button"
+  >
+    
+    ？
+  
+  </button>
+   
+  <div
+    style="display: none;"
+  >
+    <vballoon-stub
+      aria-hidden="true"
+      class="vTooltip__content"
+      id="balloon-test"
+      style="left: -0px;"
+      tabindex="-1"
+    >
+      <p>
+        テスト
+      </p>
+    </vballoon-stub>
+     
+    <vmask-stub
+      class="vTooltip__mask"
+      transparent="true"
+    />
+  </div>
+</div>
+`;
