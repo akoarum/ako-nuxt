@@ -15,25 +15,27 @@ exports[`VTooltip initialized snapshot 1`] = `
   
   </button>
    
-  <div
-    style="display: none;"
-  >
-    <vballoon-stub
-      aria-hidden="true"
-      class="vTooltip__content"
-      id="balloon-test"
-      style="left: -0px;"
-      tabindex="-1"
+  <fadetransition-stub>
+    <div
+      style="display: none;"
     >
-      <p>
-        テスト
-      </p>
-    </vballoon-stub>
-     
-    <vmask-stub
-      class="vTooltip__mask"
-      transparent="true"
-    />
-  </div>
+      <vballoon-stub
+        aria-hidden="true"
+        class="vTooltip__content"
+        id="balloon-test"
+        style="left: -0px;"
+        tabindex="-1"
+      >
+        <p>
+          テスト
+        </p>
+      </vballoon-stub>
+       
+      <vmask-stub
+        class="vTooltip__mask"
+        transparent="true"
+      />
+    </div>
+  </fadetransition-stub>
 </div>
 `;

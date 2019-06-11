@@ -25,11 +25,52 @@ describe('VModal', () => {
   })
 
   describe('computed', () => {
+    describe('innerStyle', () => {
+      it('コンテンツの高さがブラウザの高さを超えている場合は位置を調整したスタイルを返す', () => {
+        const context = {
+          contentHeight: 800,
+          windowHeight: 600,
+          btnPositionY: -40,
+          margin: 20
+        }
+        expect(VModal.extendOptions.computed.innerStyle.call(context)).toEqual({
+          top: '60px',
+          transform: 'translate(-50%, 0)'
+        })
+      })
+
+      it('コンテンツの高さが収まる場合は空オブジェクトを返す', () => {
+        const context = {
+          contentHeight: 500,
+          windowHeight: 700,
+          btnPositionY: -40,
+          margin: 20
+        }
+        expect(VModal.extendOptions.computed.innerStyle.call(context)).toEqual({})
+      })
+    })
+
     describe('contentStyle', () => {
       it('コンテンツの高さがブラウザの高さを超えていなければ空オブジェクトを返す', () => {
-        global.window.innerHeight = 1000
-        wrapper.setData({ contentHeight: 500 })
-        expect(wrapper.vm.contentStyle).toEqual({})
+        const context = {
+          windowHeight: 1000,
+          contentHeight: 500
+        }
+        expect(VModal.extendOptions.computed.contentStyle.call(context)).toEqual({})
+      })
+
+      it('コンテンツの高さがブラウザの高さを超えている場合は収まるように調整したスタイルを返す', () => {
+        const context = {
+          windowHeight: 500,
+          contentHeight: 700,
+          btnPositionY: -40,
+          margin: 20
+        }
+        expect(VModal.extendOptions.computed.contentStyle.call(context)).toEqual({
+          overflowY: 'scroll',
+          height: '420px',
+          top: '0'
+        })
       })
     })
   })
