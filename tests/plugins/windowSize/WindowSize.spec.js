@@ -52,8 +52,8 @@ describe('WindowSize', () => {
   })
 
   it('updateSize: windowWidthとwindowHeightを更新する', () => {
-    window.innerWidth = 1200
-    window.innerHeight = 800
+    global.window.innerWidth = 1200
+    global.window.innerHeight = 800
     windowSize.updateSize()
     expect(windowSize['windowWidth']).toBe(1200)
     expect(windowSize['windowHeight']).toBe(800)

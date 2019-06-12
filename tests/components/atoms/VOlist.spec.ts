@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import VOlist from '~/components/atoms/VOlist'
+import VOlist from '~/components/atoms/VOlist.vue'
 
 describe('VOlist', () => {
   let wrapper

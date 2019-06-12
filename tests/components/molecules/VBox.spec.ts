@@ -1,14 +1,13 @@
 import { shallowMount } from '@vue/test-utils'
-import VLink from '~/components/atoms/VLink'
+import VBox from '~/components/molecules/VBox.vue'
 
-describe('VLink', () => {
+describe('VBox', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VLink, {
-      propsData: {},
-      slots: {
-        default: 'テスト'
+    wrapper = shallowMount(VBox, {
+      propsData: {
+        title: 'テスト'
       }
     })
   })

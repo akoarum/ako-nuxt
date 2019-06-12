@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import VTexts from '~/components/atoms/VTexts'
+import VTexts from '~/components/atoms/VTexts.vue'
 
 describe('VTexts', () => {
   let wrapper

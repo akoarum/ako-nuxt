@@ -1,14 +1,13 @@
 import { shallowMount } from '@vue/test-utils'
-import VLabel from '~/components/atoms/VLabel'
+import VCheckbox from '~/components/atoms/VCheckbox.vue'
 
-describe('VLabel', () => {
+describe('VCheckbox', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VLabel, {
-      propsData: {},
-      slots: {
-        default: 'ラベル'
+    wrapper = shallowMount(VCheckbox, {
+      propsData: {
+        value: 'test'
       }
     })
   })

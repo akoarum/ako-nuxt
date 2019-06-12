@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import FormTextarea from '~/components/molecules/FormTextarea'
+import FormTextarea from '~/components/molecules/FormTextarea.vue'
 
 describe('FormTextarea', () => {
   let wrapper

@@ -1,13 +1,14 @@
 import { shallowMount } from '@vue/test-utils'
-import VUlist from '~/components/atoms/VUlist'
+import VSelect from '~/components/atoms/VSelect.vue'
 
-describe('VUlist', () => {
+describe('VSelect', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VUlist, {
+    wrapper = shallowMount(VSelect, {
       propsData: {
-        items: [
+        value: '',
+        options: [
           { id: 1, label: 'テスト' },
           { id: 2, label: 'テスト2' }
         ]
@@ -21,14 +22,6 @@ describe('VUlist', () => {
     })
     it('snapshot', () => {
       expect(wrapper.element).toMatchSnapshot()
-    })
-  })
-
-  describe('computed', () => {
-    it('styledClass: propsからクラスを生成して返す', () => {
-      expect(wrapper.vm.styledClass).toBe('')
-      wrapper.setProps({ ordered: true })
-      expect(wrapper.vm.styledClass).toBe('-ordered')
     })
   })
 })

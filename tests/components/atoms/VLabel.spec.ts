@@ -1,12 +1,15 @@
 import { shallowMount } from '@vue/test-utils'
-import VBalloon from '~/components/atoms/VBalloon'
+import VLabel from '~/components/atoms/VLabel.vue'
 
-describe('VBalloon', () => {
+describe('VLabel', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VBalloon, {
-      propsData: {}
+    wrapper = shallowMount(VLabel, {
+      propsData: {},
+      slots: {
+        default: 'ラベル'
+      }
     })
   })
 

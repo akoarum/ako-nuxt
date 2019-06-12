@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import VButton from '~/components/atoms/VButton'
+import VHeading from '~/components/atoms/VHeading.vue'
 
-describe('VButton', () => {
+describe('VHeading', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VButton, {
+    wrapper = shallowMount(VHeading, {
       propsData: {}
     })
   })
@@ -20,9 +20,9 @@ describe('VButton', () => {
   })
 
   describe('computed', () => {
-    it('styledClasses: propsからクラス配列を生成して返す', () => {
-      wrapper.setProps({ secondary: true, small: true })
-      expect(wrapper.vm.styledClasses).toEqual(['-secondary', '-small'])
+    it('styledClass: visualからクラス名を生成する', () => {
+      wrapper.setProps({ visual: 3 })
+      expect(wrapper.vm.styledClass).toBe('-lv3')
     })
   })
 })

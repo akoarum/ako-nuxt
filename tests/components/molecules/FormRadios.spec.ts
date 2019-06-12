@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import FormRadios from '~/components/molecules/FormRadios'
+import FormRadios from '~/components/molecules/FormRadios.vue'
 
 describe('FormRadios', () => {
   let wrapper

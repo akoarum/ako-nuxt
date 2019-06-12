@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import VContainer from '~/components/atoms/VContainer'
+import VButton from '~/components/atoms/VButton.vue'
 
-describe('VContainer', () => {
+describe('VButton', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VContainer, {
+    wrapper = shallowMount(VButton, {
       propsData: {}
     })
   })
@@ -20,9 +20,9 @@ describe('VContainer', () => {
   })
 
   describe('computed', () => {
-    it('styled: propsからスタイルを返す', () => {
-      wrapper.setProps({ maxWidth: '1500px' })
-      expect(wrapper.vm.styled).toEqual({ '--maxWidth': '1500px' })
+    it('styledClasses: propsからクラス配列を生成して返す', () => {
+      wrapper.setProps({ secondary: true, small: true })
+      expect(wrapper.vm.styledClasses).toEqual(['-secondary', '-small'])
     })
   })
 })

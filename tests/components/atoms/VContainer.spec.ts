@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import VHeading from '~/components/atoms/VHeading'
+import VContainer from '~/components/atoms/VContainer.vue'
 
-describe('VHeading', () => {
+describe('VContainer', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VHeading, {
+    wrapper = shallowMount(VContainer, {
       propsData: {}
     })
   })
@@ -20,9 +20,9 @@ describe('VHeading', () => {
   })
 
   describe('computed', () => {
-    it('styledClass: visualからクラス名を生成する', () => {
-      wrapper.setProps({ visual: 3 })
-      expect(wrapper.vm.styledClass).toBe('-lv3')
+    it('styled: propsからスタイルを返す', () => {
+      wrapper.setProps({ maxWidth: '1500px' })
+      expect(wrapper.vm.styled).toEqual({ '--maxWidth': '1500px' })
     })
   })
 })

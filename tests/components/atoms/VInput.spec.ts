@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import VRadio from '~/components/atoms/VRadio'
+import VInput from '~/components/atoms/VInput.vue'
 
-describe('VRadio', () => {
+describe('VInput', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VRadio, {
+    wrapper = shallowMount(VInput, {
       propsData: {
         value: 'test'
       }

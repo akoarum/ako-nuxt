@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import FormSelect from '~/components/molecules/FormSelect'
+import FormSelect from '~/components/molecules/FormSelect.vue'
 
 describe('FormSelect', () => {
   let wrapper

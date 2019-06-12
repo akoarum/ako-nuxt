@@ -1,14 +1,12 @@
 import { shallowMount } from '@vue/test-utils'
-import VTextarea from '~/components/atoms/VTextarea'
+import VCaret from '~/components/icons/VCaret.vue'
 
-describe('VTextarea', () => {
+describe('VCaret', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VTextarea, {
-      propsData: {
-        value: 'test'
-      }
+    wrapper = shallowMount(VCaret, {
+      propsData: {}
     })
   })
 

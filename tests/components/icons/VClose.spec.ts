@@ -1,14 +1,12 @@
 import { shallowMount } from '@vue/test-utils'
-import VInput from '~/components/atoms/VInput'
+import VClose from '~/components/icons/VClose.vue'
 
-describe('VInput', () => {
+describe('VClose', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(VInput, {
-      propsData: {
-        value: 'test'
-      }
+    wrapper = shallowMount(VClose, {
+      propsData: {}
     })
   })
 

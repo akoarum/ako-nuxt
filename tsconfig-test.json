@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "strict": true,
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "allowJs": true,

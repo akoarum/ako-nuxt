@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import FormInput from '~/components/molecules/FormInput'
+import FormInput from '~/components/molecules/FormInput.vue'
 
 describe('FormInput', () => {
   let wrapper

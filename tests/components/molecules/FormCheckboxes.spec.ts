@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import FormCheckboxes from '~/components/molecules/FormCheckboxes'
+import FormCheckboxes from '~/components/molecules/FormCheckboxes.vue'
 
 describe('FormCheckboxes', () => {
   let wrapper

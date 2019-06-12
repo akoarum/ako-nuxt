@@ -33,7 +33,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "tests/plugins/windowSize/WindowSize.spec.js"
+    "tests/**/*.tsx", "tests/plugins/windowSize/WindowSize.spec.js", "tests/components/molecules/VModal.spec.js"
   ],
   "exclude": [
     "node_modules"

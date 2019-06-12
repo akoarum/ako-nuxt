@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import VMask from '~/components/atoms/VMask'
+import VMask from '~/components/atoms/VMask.vue'
 
 describe('VMask', () => {
   let wrapper
