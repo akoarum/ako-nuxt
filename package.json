@@ -45,6 +45,7 @@
     "@storybook/addon-viewport": "^5.0.9",
     "@storybook/addons": "^5.0.9",
     "@storybook/vue": "^5.0.9",
+    "@types/jest": "^24.0.13",
     "@types/node": "^11.13.5",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__addon-knobs": "^4.0.5",
