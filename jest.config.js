@@ -28,6 +28,8 @@ module.exports = {
     '/node_modules',
     '/dist',
     '.eslintrc.js',
-    '/_hygen'
+    '/_hygen',
+    '/src/types',
+    '/.nuxt'
   ]
 }

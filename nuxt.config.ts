@@ -42,6 +42,7 @@ const nuxtConfig: NuxtConfiguration = {
   ],
 
   plugins: [
+    '~/plugins/tsStore'
     // '~/plugins/axios',
     // '~/plugins/routerSync'
   ],
